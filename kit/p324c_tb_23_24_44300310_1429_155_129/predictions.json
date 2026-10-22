@@ -1,0 +1,133 @@
+{
+ "id": "p324c_tb_23_24_44300310_1429_155_129",
+ "kind": "listing",
+ "label": "155_129",
+ "K": 24,
+ "stats": {
+  "r_odd": 0.49568235145327555,
+  "r_even": 0.39614935185443595,
+  "sff_rel_DENSE": 1.5766965814239498,
+  "otoc_E3": 2.56,
+  "eta_FIX": 0.1469490511147022,
+  "eta_SYM": 0.008960779726268986,
+  "vqa_F": 0.9721552317019027,
+  "selection_one_in": 18021582733812.95,
+  "term_set_id": "d6a76272f3fb45eb",
+  "FIX_shipped_seed_gate_ro": 0.1021481920697338,
+  "SYM_shipped_seed_gate_ro": 0.08545466436356342
+ },
+ "protos": {
+  "FIX": {
+   "P": "FIX",
+   "t0": 1.8,
+   "t1": 2.45,
+   "seed": 1019,
+   "twoq": [
+    216,
+    216
+   ],
+   "oneq": [
+    922,
+    925
+   ],
+   "depth": [
+    481,
+    482
+   ],
+   "layout": "logical->physical at the end: P->$63, Q->$54, reg1->$43, reg2->$33, reg3->$34, reg4->$44, reg5->$53, reg6->$52, reg7->$42, reg8->$41",
+   "dI0": 0.2748074152287838,
+   "dI_exact_peak": 0.34047989461384387,
+   "dI_trotter_peak": 0.2891040749976248,
+   "peak_note": "dI_exact_peak / dI_trotter_peak = the frozen verifier's signal metric, max over readout t on the 0.05 grid (t0 fixed for FIX), NOT the value at t1; the prediction at t1 for the shipped circuit is dI0. Checked by an independent rebuild to 1e-15 (job j-ef56a7dad7364058).",
+   "retention_pred": 0.09313142731921409,
+   "noisy": [
+    {
+     "seeds": "A",
+     "gate_ro": 0.09749223828471032,
+     "gate": 0.10382723799830984,
+     "ideal": 0.2748074152287838,
+     "n": 5,
+     "cite": "frozen noise-comparison verdict, FIX noisy detail (jobs j-7b057abe7268073c+j-3120b27978351caf)"
+    },
+    {
+     "seeds": "B",
+     "gate_ro": 0.09384590446697194,
+     "gate": 0.09737379260239676,
+     "ideal": 0.27480777851998206,
+     "n": 5,
+     "cite": "wave r76 noise.json, 1 job(s): j-a1c419f926abdb2f"
+    },
+    {
+     "seeds": "C",
+     "gate_ro": 0.10259899706463926,
+     "gate": 0.10510825423381553,
+     "ideal": 0.2748077785236831,
+     "n": 5,
+     "cite": "wave r98 noise.json, 5 job(s): j-2148dfdef62d9f82, j-3e01e7bb6c7261d9, j-67391e292886a5e2, j-b579611c74a69c8f, j-f2d09e78798cb846"
+    }
+   ],
+   "I_noisy": [
+    0.12877667292718442,
+    0.03493076846021248
+   ],
+   "shots_per_setting": 14000
+  },
+  "SYM": {
+   "P": "SYM",
+   "t0": 2.15,
+   "t1": 2.15,
+   "seed": 1018,
+   "twoq": [
+    225,
+    225
+   ],
+   "oneq": [
+    1049,
+    1052
+   ],
+   "depth": [
+    501,
+    501
+   ],
+   "layout": "logical->physical at the end: P->$22, Q->$32, reg1->$52, reg2->$41, reg3->$42, reg4->$53, reg5->$44, reg6->$54, reg7->$43, reg8->$33",
+   "dI0": 0.24717547101387094,
+   "dI_exact_peak": 0.26139933476480026,
+   "dI_trotter_peak": 0.2597538595823903,
+   "peak_note": "dI_exact_peak / dI_trotter_peak = the frozen verifier's signal metric, max over readout t on the 0.05 grid (t0 fixed for FIX), NOT the value at t1; the prediction at t1 for the shipped circuit is dI0. Checked by an independent rebuild to 1e-15 (job j-ef56a7dad7364058).",
+   "retention_pred": 0.0845752833551334,
+   "noisy": [
+    {
+     "seeds": "A",
+     "gate_ro": 0.0871751424668139,
+     "gate": 0.08903914182537331,
+     "ideal": 0.24717547101387094,
+     "n": 5,
+     "cite": "frozen noise-comparison verdict, SYM noisy detail (jobs j-7b057abe7268073c+j-3120b27978351caf)"
+    },
+    {
+     "seeds": "B",
+     "gate_ro": 0.08618406789522703,
+     "gate": 0.08871875826880715,
+     "ideal": 0.24717547101387627,
+     "n": 5,
+     "cite": "wave r76 noise.json, 1 job(s): j-ec4a9a1394ef542d"
+    },
+    {
+     "seeds": "C",
+     "gate_ro": 0.08751221964378786,
+     "gate": 0.09130690336054381,
+     "ideal": 0.24717547101387538,
+     "n": 5,
+     "cite": "wave r98 noise.json, 5 job(s): j-05e487554056d2d4, j-0f65d784624baddb, j-71abfc0522c565a5, j-b2ad4d9601ad8354, j-d8cfc8b08d4c7554"
+    }
+   ],
+   "I_noisy": [
+    0.1391779984205066,
+    0.052430503633689396
+   ],
+   "shots_per_setting": 17700
+  }
+ },
+ "cite": "frozen noise-comparison verdict (check version 370dcd31; jobs core:j-be96ba8a65030818,eq11:j-70ce5bd2ed4bcd60+j-c0831ef1138f1f77,m4c:j-7b057abe7268073c+j-3120b27978351caf,noise:j-ddf53639327eab62+j-af00b3a565523fc9); candidates/p324c_tb_23_24_44300310_1429_155_129/row.json",
+ "note": ""
+}

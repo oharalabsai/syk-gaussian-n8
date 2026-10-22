@@ -1,0 +1,133 @@
+{
+ "id": "p330s2_tb_23_24_16500233_1414_1718_714",
+ "kind": "listing",
+ "label": "1718_714 (borderline)",
+ "K": 24,
+ "stats": {
+  "r_odd": 0.5634586022063699,
+  "r_even": 0.6469562767258675,
+  "sff_rel_DENSE": 0.8893374311309418,
+  "otoc_E3": 2.84,
+  "eta_FIX": 0.09644691073623778,
+  "eta_SYM": 0.00547132740920593,
+  "vqa_F": 0.9705032258392499,
+  "selection_one_in": 11752287121745.25,
+  "term_set_id": "2f2d8f4f11f259b2",
+  "FIX_shipped_seed_gate_ro": 0.09352075566530749,
+  "SYM_shipped_seed_gate_ro": 0.07478196789597646
+ },
+ "protos": {
+  "FIX": {
+   "P": "FIX",
+   "t0": 1.8,
+   "t1": 2.55,
+   "seed": 1015,
+   "twoq": [
+    208,
+    208
+   ],
+   "oneq": [
+    927,
+    930
+   ],
+   "depth": [
+    423,
+    425
+   ],
+   "layout": "logical->physical at the end: P->$50, Q->$40, reg1->$44, reg2->$42, reg3->$43, reg4->$54, reg5->$53, reg6->$52, reg7->$51, reg8->$62",
+   "dI0": 0.2516176150230296,
+   "dI_exact_peak": null,
+   "dI_trotter_peak": null,
+   "peak_note": "dI_exact_peak / dI_trotter_peak = the frozen verifier's signal metric, max over readout t on the 0.05 grid (t0 fixed for FIX), NOT the value at t1; the prediction at t1 for the shipped circuit is dI0. Checked by an independent rebuild to 1e-15 (job j-ef56a7dad7364058).",
+   "retention_pred": 0.08903697054186642,
+   "noisy": [
+    {
+     "seeds": "A",
+     "gate_ro": 0.0915947703990796,
+     "gate": 0.09505119948941565,
+     "ideal": 0.2516176150230296,
+     "n": 5,
+     "cite": "frozen noise-comparison verdict, FIX noisy detail (jobs j-2eb00e82d036beb4+j-0d7e817b462788df)"
+    },
+    {
+     "seeds": "B",
+     "gate_ro": 0.08845983936667978,
+     "gate": 0.09141444836142965,
+     "ideal": 0.2516176150230287,
+     "n": 5,
+     "cite": "wave r132 noise.json, 5 job(s): j-098f786f2a78c18b, j-2454c22367aac902, j-3a8ce3cfb9a9747d, j-6563e74bbadf7ffb, j-d7049bbfcac88447"
+    },
+    {
+     "seeds": "C",
+     "gate_ro": 0.08702243476097182,
+     "gate": 0.09114864134398015,
+     "ideal": 0.2516176150230318,
+     "n": 5,
+     "cite": "wave r132 noise.json, 5 job(s): j-2390b8ed96e7f8b1, j-66698496661bf6b0, j-c5ce38c9f34da33c, j-ce33aee2a3ce7df9, j-e60793d3c2193ea7"
+    }
+   ],
+   "I_noisy": [
+    0.12234678447834213,
+    0.033791093384840876
+   ],
+   "shots_per_setting": 15100
+  },
+  "SYM": {
+   "P": "SYM",
+   "t0": 2.5,
+   "t1": 2.5,
+   "seed": 1010,
+   "twoq": [
+    250,
+    250
+   ],
+   "oneq": [
+    1128,
+    1127
+   ],
+   "depth": [
+    577,
+    579
+   ],
+   "layout": "logical->physical at the end: P->$29, Q->$28, reg1->$38, reg2->$39, reg3->$48, reg4->$58, reg5->$57, reg6->$47, reg7->$37, reg8->$36",
+   "dI0": 0.2625628799428439,
+   "dI_exact_peak": null,
+   "dI_trotter_peak": null,
+   "peak_note": "dI_exact_peak / dI_trotter_peak = the frozen verifier's signal metric, max over readout t on the 0.05 grid (t0 fixed for FIX), NOT the value at t1; the prediction at t1 for the shipped circuit is dI0. Checked by an independent rebuild to 1e-15 (job j-ef56a7dad7364058).",
+   "retention_pred": 0.0780839217065504,
+   "noisy": [
+    {
+     "seeds": "A",
+     "gate_ro": 0.07478196789597646,
+     "gate": 0.07710233323412563,
+     "ideal": 0.2625628799428439,
+     "n": 5,
+     "cite": "frozen noise-comparison verdict, SYM noisy detail (jobs j-2eb00e82d036beb4+j-0d7e817b462788df)"
+    },
+    {
+     "seeds": "B",
+     "gate_ro": 0.07422910326210674,
+     "gate": 0.07598215324439961,
+     "ideal": 0.26256287994284544,
+     "n": 5,
+     "cite": "wave r132 noise.json, 5 job(s): j-3476828d08b1890d, j-942bea387dcf3989, j-a2f2b04ee306f5d1, j-bccf5ec8ce678472, j-ca796021a87083a6"
+    },
+    {
+     "seeds": "C",
+     "gate_ro": 0.07423109096545955,
+     "gate": 0.07587669720111245,
+     "ideal": 0.26256287994284566,
+     "n": 5,
+     "cite": "wave r132 noise.json, 5 job(s): j-2fa8ff90be7e11bb, j-6278da3f28fb3e1e, j-6fc9adb02a2f4e8c, j-b6601d93068fa222, j-e2262eb82aedbd0f"
+    }
+   ],
+   "I_noisy": [
+    0.11072672679847173,
+    0.03649762353636499
+   ],
+   "shots_per_setting": 13200
+  }
+ },
+ "cite": "frozen noise-comparison verdict (check version 370dcd31; jobs core:j-a2c2b10d8136a413,eq11:j-70ce5bd2ed4bcd60+j-c0831ef1138f1f77,m4c:j-2eb00e82d036beb4+j-0d7e817b462788df,noise:j-552809eff16dab92+j-9d5acb4db6e413c6); candidates/p330s2_tb_23_24_16500233_1414_1718_714/row.json",
+ "note": "BORDERLINE option (second term set 16500233_1414): passes the pre-registered rule (frozen noise-comparison check, routing-seed list A: FIX +2.8%, SYM +0.8% vs Eq. 11), but the SYM margin is within seed noise and it falls below Eq. 11 on the held-out seed lists (list B FIX -0.05% / SYM -1.4%; list C -3.6% / -3.1%). 6 listings reached the verifier, 1 passed. Prefer set 44300310_1429 (listing 19277_201 first)."
+}

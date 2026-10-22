@@ -1,0 +1,89 @@
+{
+ "id": "typ_K24_1_24_3_3",
+ "kind": "control-",
+ "label": "typical 3_3",
+ "K": 24,
+ "stats": {},
+ "protos": {
+  "FIX": {
+   "P": "FIX",
+   "t0": 1.8,
+   "t1": 2.6,
+   "seed": 1019,
+   "twoq": [
+    288,
+    288
+   ],
+   "oneq": [
+    1054,
+    1057
+   ],
+   "depth": [
+    567,
+    566
+   ],
+   "layout": "logical->physical at the end: P->$61, Q->$51, reg1->$53, reg2->$42, reg3->$52, reg4->$43, reg5->$41, reg6->$44, reg7->$54, reg8->$55",
+   "dI0": 0.06480534980968833,
+   "dI_exact_peak": null,
+   "dI_trotter_peak": null,
+   "peak_note": "dI_exact_peak / dI_trotter_peak = the frozen verifier's signal metric, max over readout t on the 0.05 grid (t0 fixed for FIX), NOT the value at t1; the prediction at t1 for the shipped circuit is dI0. Checked by an independent rebuild to 1e-15 (job j-ef56a7dad7364058).",
+   "retention_pred": 0.014887609758412867,
+   "noisy": [
+    {
+     "seeds": "A",
+     "gate_ro": 0.015067614876737023,
+     "gate": 0.015593469532130477,
+     "ideal": 0.06480534980968833,
+     "n": 5,
+     "cite": "wave r78 j-8d825c8aff59355b noise.json"
+    }
+   ],
+   "I_noisy": [
+    0.083989215903431,
+    0.06892160102669398
+   ],
+   "shots_per_setting": 15200
+  },
+  "SYM": {
+   "P": "SYM",
+   "t0": 3.7,
+   "t1": 3.7,
+   "seed": 1001,
+   "twoq": [
+    406,
+    406
+   ],
+   "oneq": [
+    1504,
+    1513
+   ],
+   "depth": [
+    907,
+    911
+   ],
+   "layout": "logical->physical at the end: P->$22, Q->$32, reg1->$33, reg2->$44, reg3->$43, reg4->$52, reg5->$54, reg6->$53, reg7->$42, reg8->$41",
+   "dI0": 0.12243910804638736,
+   "dI_exact_peak": null,
+   "dI_trotter_peak": null,
+   "peak_note": "dI_exact_peak / dI_trotter_peak = the frozen verifier's signal metric, max over readout t on the 0.05 grid (t0 fixed for FIX), NOT the value at t1; the prediction at t1 for the shipped circuit is dI0. Checked by an independent rebuild to 1e-15 (job j-ef56a7dad7364058).",
+   "retention_pred": 0.015176488192888783,
+   "noisy": [
+    {
+     "seeds": "A",
+     "gate_ro": 0.012562611050676464,
+     "gate": 0.01300139396645883,
+     "ideal": 0.12243910804638736,
+     "n": 5,
+     "cite": "wave r78 j-8d825c8aff59355b noise.json"
+    }
+   ],
+   "I_noisy": [
+    0.056853188245172825,
+    0.04429057719449636
+   ],
+   "shots_per_setting": 9900
+  }
+ },
+ "cite": "typical draw typ_K24_1_24_3_3 (routed typical-draw table); 720-start S2 fit; noisy dI on routing-seed list A, central five seeds, job j-8d825c8aff59355b; shipped QASM from kit job j-5f38416434f460bf",
+ "note": "negative control: a typical uniform K24 Gaussian draw (no selection), same pipeline"
+}

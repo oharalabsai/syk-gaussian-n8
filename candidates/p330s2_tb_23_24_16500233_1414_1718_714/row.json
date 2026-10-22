@@ -1,0 +1,67 @@
+{
+ "id": "p330s2_tb_23_24_16500233_1414_1718_714",
+ "kind": "candidate",
+ "status": "CERTIFIED",
+ "K": 24,
+ "term_set_id": null,
+ "r_odd": null,
+ "r_even": null,
+ "sff_rel": null,
+ "dI": {
+  "sym_ex_12": null,
+  "fix_ex_12": null,
+  "sym_tr_12": null,
+  "fix_tr_12": null,
+  "sym_ex_all": null,
+  "fix_ex_all": null,
+  "sym_tr_all": null,
+  "fix_tr_all": null
+ },
+ "rev_sym": null,
+ "rev_fix": null,
+ "eta_tfd": "VQA",
+ "eta_fix": null,
+ "eta_sym": null,
+ "F_fix": null,
+ "F_sym": null,
+ "q2_fix": null,
+ "q2_sym": null,
+ "q2_fix_B": null,
+ "q2_sym_B": null,
+ "step_2q": null,
+ "ship": {
+  "FIX": {
+   "2q": 208,
+   "1q": 927,
+   "depth": 423,
+   "seed": 1015,
+   "t": 2.55,
+   "t0": 1.8,
+   "mu": -12.0
+  },
+  "SYM": {
+   "2q": 250,
+   "1q": 1128,
+   "depth": 577,
+   "seed": 1010,
+   "t": 2.5,
+   "t0": 2.5,
+   "mu": -12.0
+  }
+ },
+ "d12": null,
+ "m": null,
+ "one_in": null,
+ "failed": [],
+ "extra": {
+  "anticomm_pairs": null,
+  "otoc_E3": null,
+  "near_mirror_pct_ownK": null,
+  "anticomm_pairs_pct_ownK": null,
+  "sumJ2_pct": null,
+  "ks_p": null,
+  "r_odd_pct_ownK": null,
+  "r_even_pct_ownK": null
+ },
+ "source": "frozen noise-comparison verdict"
+}

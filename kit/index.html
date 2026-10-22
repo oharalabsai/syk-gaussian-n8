@@ -1,0 +1,36 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>GIST hardware kit: circuits that beat Eq. 11 in noisy simulation, canonical term order</title><style>
+body{background:#FAF6EC;color:#1d2a20;font:16px/1.55 -apple-system,Segoe UI,Helvetica,Arial,sans-serif;margin:0;padding:24px}
+main{max-width:880px;margin:0 auto}h1{color:#2E5E3A;font-size:1.6em;margin:.2em 0 .4em}h2{color:#2E5E3A;font-size:1.1em;margin-top:1.6em}
+.lead{font-size:1.05em}.tw{overflow-x:auto}table{border-collapse:collapse;width:100%;min-width:520px;background:#fff}
+th,td{padding:8px 10px;border-bottom:1px solid #e4dcc6;text-align:left;vertical-align:top}th{background:#2E5E3A;color:#FAF6EC;font-weight:600}
+tr.l td:first-child{border-left:4px solid #C9A227}tr.p td:first-child{border-left:4px solid #2E5E3A}tr.n td:first-child{border-left:4px solid #bbb}
+.d{color:#2E5E3A;font-weight:600}.dn{color:#9a6b63}small{color:#6b6b5e}a{color:#2E5E3A}code{background:#f1ead6;padding:1px 4px;border-radius:3px}
+</style></head><body><main>
+<h1>GIST hardware kit: wormhole-signal circuits that beat Eq. 11 in noisy simulation, in canonical term order (order-optimised SYM: tie at best)</h1>
+<p class="lead">In plain words: we searched sparse Gaussian SYK models (8 Majoranas, 24 terms) for ones whose traversable-wormhole
+signal (the mutual-information jump dI between the probe P and the readout T when the coupling sign flips) survives
+hardware noise better than the published Eq. 11 model. 2 listings, both from one term set (the recommended pick), keep
+more signal than Eq. 11 on both protocols (FIX and SYM) in a FakeNighthawk simulation on all three routing-seed lists, with
+both sides in canonical term order. 1 more listing, on a second term set, is borderline: it passes the pre-registered
+rule on seed list A (FIX +2.8%, SYM +0.8%) but falls below Eq. 11 on the held-out lists B and C. This folder holds the routed circuits ready to run,
+the same-pipeline Eq. 11 circuits as the positive control, and two typical random draws as the negative control.</p>
+<h2>The one table</h2><div class="tw"><table>
+<tr><th>listing</th><th>2q gates FIX / SYM</th><th>noiseless dI FIX / SYM (bits)</th><th>noisy dI FIX / SYM (vs Eq. 11, lists A-C)</th></tr>
+<tr class='l'><td>155_129<br><small>listing</small></td><td>216 / 225</td><td>0.27 / 0.25</td><td>0.097 ± 0.004 <span class='d'>(+6 to +14%)</span> / 0.087 ± 0.0007 <span class='d'>(+14 to +18%)</span></td></tr><tr class='l'><td>19277_201<br><small>listing</small></td><td>216 / 225</td><td>0.33 / 0.28</td><td>0.12 ± 0.005 <span class='d'>(+25 to +35%)</span> / 0.096 ± 0.0006 <span class='d'>(+25 to +29%)</span></td></tr><tr class='l'><td>1718_714 (borderline)<br><small>listing</small></td><td>208 / 250</td><td>0.25 / 0.26</td><td>0.092 ± 0.002 <span class='dn'>(-4 to +3%)</span> / 0.075 ± 0.0003 <span class='dn'>(-3 to +1%)</span></td></tr><tr class='p'><td>Eq. 11<br><small>control+</small></td><td>175 / 215</td><td>0.21 / 0.20</td><td>0.089 ± 0.0009 / 0.074 ± 0.001</td></tr><tr class='n'><td>typical 1_1<br><small>control-</small></td><td>307 / 471</td><td>0.064 / 0.064</td><td>0.017 <span class='dn'>(-81%)</span> / 0.0069 <span class='dn'>(-91%)</span></td></tr><tr class='n'><td>typical 3_3<br><small>control-</small></td><td>288 / 406</td><td>0.065 / 0.12</td><td>0.015 <span class='dn'>(-83%)</span> / 0.013 <span class='dn'>(-83%)</span></td></tr></table></div>
+<p><small>2q = cz count of the mu = -12 circuit. Noiseless dI = shipped circuit, fitted VQA TFD. Noisy dI = FakeNighthawk density
+matrix, gate + readout errors, median of the central five routing-seed list A routing seeds &plusmn; half the range of the routing-seed lists A, B, C medians;
+the margin over Eq. 11 is the range over those three seed lists (each against Eq. 11 on the same list). Typical 1_1's FIX and SYM noiseless dI
+are close but not identical (0.06393 / 0.06385, both at t = 2.5; wave r78 j-8d825c8aff59355b and KIT j-5f38416434f460bf agree).</small></p>
+<h2>More in the README</h2><p>Noise-scale stress (errors x0.5 / x1 / x2: 19277_201 beats Eq. 11 at every scale; 155_129 FIX
+falls to Eq. 11 near x1.55), the JW map (shipped S2; S3 variants in each <code>S3/</code> folder) with the measured physical
+qubits, and the term overlap between options: <a href="README.md">README.md</a>.</p>
+<h2>What to run</h2><p>Each folder: <code>FIX_mu-12.qasm</code>, <code>FIX_mu+12.qasm</code>, <code>SYM_mu-12.qasm</code>,
+<code>SYM_mu+12.qasm</code>, run as is; two-qubit tomography of P and register qubit 1 (physical qubits in each header). Prediction
+to test: 19277_201 &gt; 155_129 &gt; Eq. 11 on both protocols, and noisy dI = dI0 &times; a e<sup>&minus;b&middot;2q</sup>
+(FIX a 1.088, b 0.00540; SYM a 1.209, b 0.00561). Shots and caveats: <a href="README.md">README.md</a>. Everything:
+<a href="gist_kit.zip">gist_kit.zip</a>.</p>
+<h2>Caveats</h2><p>FakeNighthawk is a proxy for the device. The win holds with both sides in the canonical term order; with
+order-optimised SYM it is a tie at best. The listings are rare selections (about 1 in 1.5e13), and so far come from one distinct
+term set.</p>
+</main></body></html>

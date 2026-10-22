@@ -1,0 +1,49 @@
+{
+ "frozen": "2026-10-21T23:50Z",
+ "job": "j-76d51eb26133bf17",
+ "beta": 3.0,
+ "t_grid": "0..20 step 0.02",
+ "t_wind": 2.21,
+ "late_window": [
+  8,
+  20
+ ],
+ "source": "diag.py metrics()",
+ "rules": [
+  {
+   "name": "otoc_E3",
+   "group": "otoc",
+   "metric": "E3",
+   "max": 2.95,
+   "why": "PDF-calibrated: max over 28 pairs i<j of the first t with F^(i,j) <= 0.75; 13/13 PASS, 36/36 FAIL, nested LOO 48/49"
+  },
+  {
+   "name": "wind_Rbar",
+   "group": "winding",
+   "metric": "wind_Rbar_min",
+   "min": 0.8066842450844627,
+   "why": "min(DENSE p5, 0.95 x Eq. 11), pre-registered"
+  },
+  {
+   "name": "wind_reversal",
+   "group": "winding",
+   "metric": "wind_reversed_all",
+   "min": 1.0,
+   "why": "every insertion: slope before > 0 > slope after mu=-12 (TW S11.3); Eq. 11 has it"
+  },
+  {
+   "name": "g_late",
+   "group": "two_point",
+   "metric": "g_late_absmax",
+   "max": 0.30235831695850046,
+   "why": "max(DENSE p95, 1.05 x Eq. 11), pre-registered"
+  },
+  {
+   "name": "g_spread",
+   "group": "two_point",
+   "metric": "g_half_spread",
+   "max": 1.4399999999999995,
+   "why": "max(DENSE p95, 1.05 x Eq. 11), pre-registered"
+  }
+ ]
+}

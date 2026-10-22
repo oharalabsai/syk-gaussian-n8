@@ -1,0 +1,8 @@
+"""N = 8 Gaussian sparse SYK for IBM Nighthawk. The physics modules import each other by flat name (sykg, circuits,
+vqa, diag, verify), as in the run that produced the numbers; this puts the package directory on sys.path."""
+import os
+import sys
+
+_HERE = os.path.dirname(os.path.abspath(__file__))
+if _HERE not in sys.path:
+    sys.path.insert(0, _HERE)

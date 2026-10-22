@@ -1,0 +1,841 @@
+{
+ "entries": [
+  {
+   "id": "p324c_tb_23_24_44300310_1429_155_129",
+   "kind": "listing",
+   "label": "155_129",
+   "K": 24,
+   "stats": {
+    "r_odd": 0.49568235145327555,
+    "r_even": 0.39614935185443595,
+    "sff_rel_DENSE": 1.5766965814239498,
+    "otoc_E3": 2.56,
+    "eta_FIX": 0.1469490511147022,
+    "eta_SYM": 0.008960779726268986,
+    "vqa_F": 0.9721552317019027,
+    "selection_one_in": 18021582733812.95,
+    "term_set_id": "d6a76272f3fb45eb",
+    "FIX_shipped_seed_gate_ro": 0.1021481920697338,
+    "SYM_shipped_seed_gate_ro": 0.08545466436356342
+   },
+   "protos": {
+    "FIX": {
+     "P": "FIX",
+     "t0": 1.8,
+     "t1": 2.45,
+     "seed": 1019,
+     "twoq": [
+      216,
+      216
+     ],
+     "oneq": [
+      922,
+      925
+     ],
+     "depth": [
+      481,
+      482
+     ],
+     "layout": "logical->physical at the end: P->$63, Q->$54, reg1->$43, reg2->$33, reg3->$34, reg4->$44, reg5->$53, reg6->$52, reg7->$42, reg8->$41",
+     "dI0": 0.2748074152287838,
+     "dI_exact_peak": 0.34047989461384387,
+     "dI_trotter_peak": 0.2891040749976248,
+     "peak_note": "dI_exact_peak / dI_trotter_peak = the frozen verifier's signal metric, max over readout t on the 0.05 grid (t0 fixed for FIX), NOT the value at t1; the prediction at t1 for the shipped circuit is dI0. Checked by an independent rebuild to 1e-15 (job j-ef56a7dad7364058).",
+     "retention_pred": 0.09313142731921409,
+     "noisy": [
+      {
+       "seeds": "A",
+       "gate_ro": 0.09749223828471032,
+       "gate": 0.10382723799830984,
+       "ideal": 0.2748074152287838,
+       "n": 5,
+       "cite": "frozen noise-comparison verdict, FIX noisy detail (jobs j-7b057abe7268073c+j-3120b27978351caf)"
+      },
+      {
+       "seeds": "B",
+       "gate_ro": 0.09384590446697194,
+       "gate": 0.09737379260239676,
+       "ideal": 0.27480777851998206,
+       "n": 5,
+       "cite": "wave r76 noise.json, 1 job(s): j-a1c419f926abdb2f"
+      },
+      {
+       "seeds": "C",
+       "gate_ro": 0.10259899706463926,
+       "gate": 0.10510825423381553,
+       "ideal": 0.2748077785236831,
+       "n": 5,
+       "cite": "wave r98 noise.json, 5 job(s): j-2148dfdef62d9f82, j-3e01e7bb6c7261d9, j-67391e292886a5e2, j-b579611c74a69c8f, j-f2d09e78798cb846"
+      }
+     ],
+     "I_noisy": [
+      0.12877667292718442,
+      0.03493076846021248
+     ],
+     "shots_per_setting": 14000
+    },
+    "SYM": {
+     "P": "SYM",
+     "t0": 2.15,
+     "t1": 2.15,
+     "seed": 1018,
+     "twoq": [
+      225,
+      225
+     ],
+     "oneq": [
+      1049,
+      1052
+     ],
+     "depth": [
+      501,
+      501
+     ],
+     "layout": "logical->physical at the end: P->$22, Q->$32, reg1->$52, reg2->$41, reg3->$42, reg4->$53, reg5->$44, reg6->$54, reg7->$43, reg8->$33",
+     "dI0": 0.24717547101387094,
+     "dI_exact_peak": 0.26139933476480026,
+     "dI_trotter_peak": 0.2597538595823903,
+     "peak_note": "dI_exact_peak / dI_trotter_peak = the frozen verifier's signal metric, max over readout t on the 0.05 grid (t0 fixed for FIX), NOT the value at t1; the prediction at t1 for the shipped circuit is dI0. Checked by an independent rebuild to 1e-15 (job j-ef56a7dad7364058).",
+     "retention_pred": 0.0845752833551334,
+     "noisy": [
+      {
+       "seeds": "A",
+       "gate_ro": 0.0871751424668139,
+       "gate": 0.08903914182537331,
+       "ideal": 0.24717547101387094,
+       "n": 5,
+       "cite": "frozen noise-comparison verdict, SYM noisy detail (jobs j-7b057abe7268073c+j-3120b27978351caf)"
+      },
+      {
+       "seeds": "B",
+       "gate_ro": 0.08618406789522703,
+       "gate": 0.08871875826880715,
+       "ideal": 0.24717547101387627,
+       "n": 5,
+       "cite": "wave r76 noise.json, 1 job(s): j-ec4a9a1394ef542d"
+      },
+      {
+       "seeds": "C",
+       "gate_ro": 0.08751221964378786,
+       "gate": 0.09130690336054381,
+       "ideal": 0.24717547101387538,
+       "n": 5,
+       "cite": "wave r98 noise.json, 5 job(s): j-05e487554056d2d4, j-0f65d784624baddb, j-71abfc0522c565a5, j-b2ad4d9601ad8354, j-d8cfc8b08d4c7554"
+      }
+     ],
+     "I_noisy": [
+      0.1391779984205066,
+      0.052430503633689396
+     ],
+     "shots_per_setting": 17700
+    }
+   },
+   "cite": "frozen noise-comparison verdict (check version 370dcd31; jobs core:j-be96ba8a65030818,eq11:j-70ce5bd2ed4bcd60+j-c0831ef1138f1f77,m4c:j-7b057abe7268073c+j-3120b27978351caf,noise:j-ddf53639327eab62+j-af00b3a565523fc9); candidates/p324c_tb_23_24_44300310_1429_155_129/row.json",
+   "note": ""
+  },
+  {
+   "id": "p325_tb_23_24_44300310_1429_19277_201",
+   "kind": "listing",
+   "label": "19277_201",
+   "K": 24,
+   "stats": {
+    "r_odd": 0.4436614177210407,
+    "r_even": 0.4507150665661331,
+    "sff_rel_DENSE": 1.2659738185661258,
+    "otoc_E3": 2.94,
+    "eta_FIX": 0.09362966652888022,
+    "eta_SYM": 0.0016871799063117947,
+    "vqa_F": 0.9653547501306913,
+    "selection_one_in": 15181818181818.182,
+    "term_set_id": "d6a76272f3fb45eb",
+    "FIX_shipped_seed_gate_ro": 0.11993155671838118,
+    "SYM_shipped_seed_gate_ro": 0.09384729974589079
+   },
+   "protos": {
+    "FIX": {
+     "P": "FIX",
+     "t0": 1.8,
+     "t1": 2.6,
+     "seed": 1019,
+     "twoq": [
+      216,
+      216
+     ],
+     "oneq": [
+      925,
+      927
+     ],
+     "depth": [
+      471,
+      472
+     ],
+     "layout": "logical->physical at the end: P->$63, Q->$54, reg1->$43, reg2->$33, reg3->$34, reg4->$44, reg5->$53, reg6->$52, reg7->$42, reg8->$41",
+     "dI0": 0.3263997938845131,
+     "dI_exact_peak": 0.394540603566224,
+     "dI_trotter_peak": 0.34261654182862533,
+     "peak_note": "dI_exact_peak / dI_trotter_peak = the frozen verifier's signal metric, max over readout t on the 0.05 grid (t0 fixed for FIX), NOT the value at t1; the prediction at t1 for the shipped circuit is dI0. Checked by an independent rebuild to 1e-15 (job j-ef56a7dad7364058).",
+     "retention_pred": 0.11061593318307973,
+     "noisy": [
+      {
+       "seeds": "A",
+       "gate_ro": 0.11567261735750178,
+       "gate": 0.1230454754588437,
+       "ideal": 0.3263997938845131,
+       "n": 5,
+       "cite": "frozen noise-comparison verdict, FIX noisy detail (jobs j-9f103849485d9e5a+j-f24ce419a53b46e7)"
+      },
+      {
+       "seeds": "B",
+       "gate_ro": 0.11089999759897706,
+       "gate": 0.1162567133990624,
+       "ideal": 0.3263997938748895,
+       "n": 5,
+       "cite": "wave r76 noise.json, 1 job(s): j-fd5dd110921b2fc9"
+      },
+      {
+       "seeds": "C",
+       "gate_ro": 0.12152211213191277,
+       "gate": 0.12414481601556471,
+       "ideal": 0.32639979387487505,
+       "n": 5,
+       "cite": "wave r98 noise.json, 5 job(s): j-0ac75b9103f2c2ce, j-22a0ddbcda8dbaf7, j-974c467d0a12133f, j-e1479944186bb9cb, j-f24139638d69244d"
+      }
+     ],
+     "I_noisy": [
+      0.14402115901700774,
+      0.033121161418030676
+     ],
+     "shots_per_setting": 14900
+    },
+    "SYM": {
+     "P": "SYM",
+     "t0": 2.35,
+     "t1": 2.35,
+     "seed": 1018,
+     "twoq": [
+      225,
+      225
+     ],
+     "oneq": [
+      1069,
+      1071
+     ],
+     "depth": [
+      509,
+      509
+     ],
+     "layout": "logical->physical at the end: P->$22, Q->$32, reg1->$52, reg2->$41, reg3->$42, reg4->$53, reg5->$44, reg6->$54, reg7->$43, reg8->$33",
+     "dI0": 0.27691308427694605,
+     "dI_exact_peak": 0.2978467693852651,
+     "dI_trotter_peak": 0.2973746029637332,
+     "peak_note": "dI_exact_peak / dI_trotter_peak = the frozen verifier's signal metric, max over readout t on the 0.05 grid (t0 fixed for FIX), NOT the value at t1; the prediction at t1 for the shipped circuit is dI0. Checked by an independent rebuild to 1e-15 (job j-ef56a7dad7364058).",
+     "retention_pred": 0.09475051254641836,
+     "noisy": [
+      {
+       "seeds": "A",
+       "gate_ro": 0.0959903908845523,
+       "gate": 0.0980686447667285,
+       "ideal": 0.27691308427694605,
+       "n": 5,
+       "cite": "frozen noise-comparison verdict, SYM noisy detail (jobs j-9f103849485d9e5a+j-f24ce419a53b46e7)"
+      },
+      {
+       "seeds": "B",
+       "gate_ro": 0.09470064057217753,
+       "gate": 0.09799029927896052,
+       "ideal": 0.27691308427694494,
+       "n": 5,
+       "cite": "wave r76 noise.json, 1 job(s): j-a2462f616422f383"
+      },
+      {
+       "seeds": "C",
+       "gate_ro": 0.09556172825016329,
+       "gate": 0.09938146274332871,
+       "ideal": 0.2769130842769454,
+       "n": 5,
+       "cite": "wave r98 noise.json, 5 job(s): j-102b6dda5cfcfcdd, j-4c2306fece50b27f, j-6bcef4decd939bfe, j-bcdf33791261233e, j-bebaab4fae180eb6"
+      }
+     ],
+     "I_noisy": [
+      0.1479696032503166,
+      0.05325345162401551
+     ],
+     "shots_per_setting": 18000
+    }
+   },
+   "cite": "frozen noise-comparison verdict (check version 370dcd31; jobs core:j-52bd7902571bc219,eq11:j-70ce5bd2ed4bcd60+j-c0831ef1138f1f77,m4c:j-9f103849485d9e5a+j-f24ce419a53b46e7,noise:j-e10e45a66c692933+j-266bf0011bbfca30); candidates/p325_tb_23_24_44300310_1429_19277_201/row.json",
+   "note": ""
+  },
+  {
+   "id": "p330s2_tb_23_24_16500233_1414_1718_714",
+   "kind": "listing",
+   "label": "1718_714 (borderline)",
+   "K": 24,
+   "stats": {
+    "r_odd": 0.5634586022063699,
+    "r_even": 0.6469562767258675,
+    "sff_rel_DENSE": 0.8893374311309418,
+    "otoc_E3": 2.84,
+    "eta_FIX": 0.09644691073623778,
+    "eta_SYM": 0.00547132740920593,
+    "vqa_F": 0.9705032258392499,
+    "selection_one_in": 11752287121745.25,
+    "term_set_id": "2f2d8f4f11f259b2",
+    "FIX_shipped_seed_gate_ro": 0.09352075566530749,
+    "SYM_shipped_seed_gate_ro": 0.07478196789597646
+   },
+   "protos": {
+    "FIX": {
+     "P": "FIX",
+     "t0": 1.8,
+     "t1": 2.55,
+     "seed": 1015,
+     "twoq": [
+      208,
+      208
+     ],
+     "oneq": [
+      927,
+      930
+     ],
+     "depth": [
+      423,
+      425
+     ],
+     "layout": "logical->physical at the end: P->$50, Q->$40, reg1->$44, reg2->$42, reg3->$43, reg4->$54, reg5->$53, reg6->$52, reg7->$51, reg8->$62",
+     "dI0": 0.2516176150230296,
+     "dI_exact_peak": null,
+     "dI_trotter_peak": null,
+     "peak_note": "dI_exact_peak / dI_trotter_peak = the frozen verifier's signal metric, max over readout t on the 0.05 grid (t0 fixed for FIX), NOT the value at t1; the prediction at t1 for the shipped circuit is dI0. Checked by an independent rebuild to 1e-15 (job j-ef56a7dad7364058).",
+     "retention_pred": 0.08903697054186642,
+     "noisy": [
+      {
+       "seeds": "A",
+       "gate_ro": 0.0915947703990796,
+       "gate": 0.09505119948941565,
+       "ideal": 0.2516176150230296,
+       "n": 5,
+       "cite": "frozen noise-comparison verdict, FIX noisy detail (jobs j-2eb00e82d036beb4+j-0d7e817b462788df)"
+      },
+      {
+       "seeds": "B",
+       "gate_ro": 0.08845983936667978,
+       "gate": 0.09141444836142965,
+       "ideal": 0.2516176150230287,
+       "n": 5,
+       "cite": "wave r132 noise.json, 5 job(s): j-098f786f2a78c18b, j-2454c22367aac902, j-3a8ce3cfb9a9747d, j-6563e74bbadf7ffb, j-d7049bbfcac88447"
+      },
+      {
+       "seeds": "C",
+       "gate_ro": 0.08702243476097182,
+       "gate": 0.09114864134398015,
+       "ideal": 0.2516176150230318,
+       "n": 5,
+       "cite": "wave r132 noise.json, 5 job(s): j-2390b8ed96e7f8b1, j-66698496661bf6b0, j-c5ce38c9f34da33c, j-ce33aee2a3ce7df9, j-e60793d3c2193ea7"
+      }
+     ],
+     "I_noisy": [
+      0.12234678447834213,
+      0.033791093384840876
+     ],
+     "shots_per_setting": 15100
+    },
+    "SYM": {
+     "P": "SYM",
+     "t0": 2.5,
+     "t1": 2.5,
+     "seed": 1010,
+     "twoq": [
+      250,
+      250
+     ],
+     "oneq": [
+      1128,
+      1127
+     ],
+     "depth": [
+      577,
+      579
+     ],
+     "layout": "logical->physical at the end: P->$29, Q->$28, reg1->$38, reg2->$39, reg3->$48, reg4->$58, reg5->$57, reg6->$47, reg7->$37, reg8->$36",
+     "dI0": 0.2625628799428439,
+     "dI_exact_peak": null,
+     "dI_trotter_peak": null,
+     "peak_note": "dI_exact_peak / dI_trotter_peak = the frozen verifier's signal metric, max over readout t on the 0.05 grid (t0 fixed for FIX), NOT the value at t1; the prediction at t1 for the shipped circuit is dI0. Checked by an independent rebuild to 1e-15 (job j-ef56a7dad7364058).",
+     "retention_pred": 0.0780839217065504,
+     "noisy": [
+      {
+       "seeds": "A",
+       "gate_ro": 0.07478196789597646,
+       "gate": 0.07710233323412563,
+       "ideal": 0.2625628799428439,
+       "n": 5,
+       "cite": "frozen noise-comparison verdict, SYM noisy detail (jobs j-2eb00e82d036beb4+j-0d7e817b462788df)"
+      },
+      {
+       "seeds": "B",
+       "gate_ro": 0.07422910326210674,
+       "gate": 0.07598215324439961,
+       "ideal": 0.26256287994284544,
+       "n": 5,
+       "cite": "wave r132 noise.json, 5 job(s): j-3476828d08b1890d, j-942bea387dcf3989, j-a2f2b04ee306f5d1, j-bccf5ec8ce678472, j-ca796021a87083a6"
+      },
+      {
+       "seeds": "C",
+       "gate_ro": 0.07423109096545955,
+       "gate": 0.07587669720111245,
+       "ideal": 0.26256287994284566,
+       "n": 5,
+       "cite": "wave r132 noise.json, 5 job(s): j-2fa8ff90be7e11bb, j-6278da3f28fb3e1e, j-6fc9adb02a2f4e8c, j-b6601d93068fa222, j-e2262eb82aedbd0f"
+      }
+     ],
+     "I_noisy": [
+      0.11072672679847173,
+      0.03649762353636499
+     ],
+     "shots_per_setting": 13200
+    }
+   },
+   "cite": "frozen noise-comparison verdict (check version 370dcd31; jobs core:j-a2c2b10d8136a413,eq11:j-70ce5bd2ed4bcd60+j-c0831ef1138f1f77,m4c:j-2eb00e82d036beb4+j-0d7e817b462788df,noise:j-552809eff16dab92+j-9d5acb4db6e413c6); candidates/p330s2_tb_23_24_16500233_1414_1718_714/row.json",
+   "note": "BORDERLINE option (second term set 16500233_1414): passes the pre-registered rule (frozen noise-comparison check, routing-seed list A: FIX +2.8%, SYM +0.8% vs Eq. 11), but the SYM margin is within seed noise and it falls below Eq. 11 on the held-out seed lists (list B FIX -0.05% / SYM -1.4%; list C -3.6% / -3.1%). 6 listings reached the verifier, 1 passed. Prefer set 44300310_1429 (listing 19277_201 first)."
+  },
+  {
+   "id": "eq11_greedy",
+   "kind": "control+",
+   "label": "Eq. 11",
+   "K": 10,
+   "stats": {
+    "FIX_shipped_seed_gate_ro": 0.08287743551081439,
+    "FIX_shipped_seed_ideal": 0.2118347750253584,
+    "SYM_shipped_seed_gate_ro": 0.07415210740738676,
+    "SYM_shipped_seed_ideal": 0.2003254971849331
+   },
+   "protos": {
+    "FIX": {
+     "P": "FIX",
+     "t0": 1.8,
+     "t1": 2.35,
+     "seed": 1007,
+     "twoq": [
+      175,
+      175
+     ],
+     "oneq": [
+      697,
+      696
+     ],
+     "depth": [
+      345,
+      345
+     ],
+     "layout": "logical->physical at the end: P->$56, Q->$54, reg1->$53, reg2->$55, reg3->$52, reg4->$62, reg5->$42, reg6->$43, reg7->$44, reg8->$45",
+     "dI0": 0.21183458556215773,
+     "dI_exact_peak": null,
+     "dI_trotter_peak": null,
+     "peak_note": "dI_exact_peak / dI_trotter_peak = the frozen verifier's signal metric, max over readout t on the 0.05 grid (t0 fixed for FIX), NOT the value at t1; the prediction at t1 for the shipped circuit is dI0. Checked by an independent rebuild to 1e-15 (job j-ef56a7dad7364058).",
+     "retention_pred": 0.08958132409047376,
+     "noisy": [
+      {
+       "seeds": "A",
+       "gate_ro": 0.08912640050425469,
+       "gate": 0.09314986149980053,
+       "ideal": 0.21183458556215773,
+       "n": 5,
+       "cite": "frozen noise-comparison verdict, FIX noisy detail, Eq. 11 (job j-70ce5bd2ed4bcd60)"
+      },
+      {
+       "seeds": "B",
+       "gate_ro": 0.08851368930590797,
+       "gate": 0.09163216381117878,
+       "ideal": 0.21183477502397774,
+       "n": 5,
+       "cite": "wave r76 noise.json, 1 job(s): j-4e2d55cbcdccee62"
+      },
+      {
+       "seeds": "C",
+       "gate_ro": 0.0903440780397009,
+       "gate": 0.09304074880117819,
+       "ideal": 0.21183465199557938,
+       "n": 5,
+       "cite": "wave r98 noise.json, 5 job(s): j-10e9d2dd829664d3, j-4108a7d4d657ae18, j-4f5c9a9a30c35883, j-52ba89259bca9ca9, j-e01b1e5e1d7e9552"
+      }
+     ],
+     "I_noisy": [
+      0.13324584890263402,
+      0.04478217379922511
+     ],
+     "shots_per_setting": 15600
+    },
+    "SYM": {
+     "P": "SYM",
+     "t0": 2.05,
+     "t1": 2.05,
+     "seed": 1004,
+     "twoq": [
+      215,
+      215
+     ],
+     "oneq": [
+      819,
+      818
+     ],
+     "depth": [
+      397,
+      396
+     ],
+     "layout": "logical->physical at the end: P->$23, Q->$54, reg1->$33, reg2->$34, reg3->$42, reg4->$45, reg5->$53, reg6->$52, reg7->$43, reg8->$44",
+     "dI0": 0.20032549718392567,
+     "dI_exact_peak": null,
+     "dI_trotter_peak": null,
+     "peak_note": "dI_exact_peak / dI_trotter_peak = the frozen verifier's signal metric, max over readout t on the 0.05 grid (t0 fixed for FIX), NOT the value at t1; the prediction at t1 for the shipped circuit is dI0. Checked by an independent rebuild to 1e-15 (job j-ef56a7dad7364058).",
+     "retention_pred": 0.0725000391006847,
+     "noisy": [
+      {
+       "seeds": "A",
+       "gate_ro": 0.07415210740738742,
+       "gate": 0.0757265909055933,
+       "ideal": 0.20032549718392567,
+       "n": 5,
+       "cite": "frozen noise-comparison verdict, SYM noisy detail, Eq. 11 (job j-c0831ef1138f1f77)"
+      },
+      {
+       "seeds": "B",
+       "gate_ro": 0.07531368702200969,
+       "gate": 0.07787297070978583,
+       "ideal": 0.2003252138064504,
+       "n": 5,
+       "cite": "wave r76 noise.json, 1 job(s): j-7494a0301d5f0e68"
+      },
+      {
+       "seeds": "C",
+       "gate_ro": 0.07660171707106622,
+       "gate": 0.07916425289316864,
+       "ideal": 0.2003254971839279,
+       "n": 5,
+       "cite": "wave r98 noise.json, 5 job(s): j-1f65e39555c4f6e5, j-4e19496d94326db0, j-8eebec528a5bb040, j-d680dabf01fca11d, j-e364048393df31bb"
+      }
+     ],
+     "I_noisy": [
+      0.13173439837694922,
+      0.056420711354939534
+     ],
+     "shots_per_setting": 17100
+    }
+   },
+   "cite": "Eq. 11 of arXiv:2604.10090 (GIST), greedy term order, pinned S2 fit src/sykn8/v2_bars/vqa_eq11.json (F 0.9825); noisy-dI reference jobs j-70ce5bd2ed4bcd60 (FIX) / j-c0831ef1138f1f77 (SYM); shipped QASM from kit job j-5f38416434f460bf",
+   "note": "positive control: the published sparse model, same pipeline as the listings"
+  },
+  {
+   "id": "typ_K24_1_24_1_1",
+   "kind": "control-",
+   "label": "typical 1_1",
+   "K": 24,
+   "stats": {},
+   "protos": {
+    "FIX": {
+     "P": "FIX",
+     "t0": 1.8,
+     "t1": 2.5,
+     "seed": 1004,
+     "twoq": [
+      307,
+      307
+     ],
+     "oneq": [
+      1152,
+      1153
+     ],
+     "depth": [
+      619,
+      621
+     ],
+     "layout": "logical->physical at the end: P->$56, Q->$55, reg1->$54, reg2->$34, reg3->$44, reg4->$33, reg5->$53, reg6->$52, reg7->$42, reg8->$43",
+     "dI0": 0.06393105095263518,
+     "dI_exact_peak": null,
+     "dI_trotter_peak": null,
+     "peak_note": "dI_exact_peak / dI_trotter_peak = the frozen verifier's signal metric, max over readout t on the 0.05 grid (t0 fixed for FIX), NOT the value at t1; the prediction at t1 for the shipped circuit is dI0. Checked by an independent rebuild to 1e-15 (job j-ef56a7dad7364058).",
+     "retention_pred": 0.013254622005284183,
+     "noisy": [
+      {
+       "seeds": "A",
+       "gate_ro": 0.016571330259075312,
+       "gate": 0.016974093220332165,
+       "ideal": 0.06393105095263518,
+       "n": 5,
+       "cite": "wave r78 j-8d825c8aff59355b noise.json"
+      }
+     ],
+     "I_noisy": [
+      0.07260403926526693,
+      0.05601413366393482
+     ],
+     "shots_per_setting": 11800
+    },
+    "SYM": {
+     "P": "SYM",
+     "t0": 2.5,
+     "t1": 2.5,
+     "seed": 1000,
+     "twoq": [
+      471,
+      471
+     ],
+     "oneq": [
+      1721,
+      1717
+     ],
+     "depth": [
+      1040,
+      1041
+     ],
+     "layout": "logical->physical at the end: P->$22, Q->$32, reg1->$54, reg2->$52, reg3->$44, reg4->$34, reg5->$53, reg6->$42, reg7->$33, reg8->$43",
+     "dI0": 0.06385341731281469,
+     "dI_exact_peak": null,
+     "dI_trotter_peak": null,
+     "peak_note": "dI_exact_peak / dI_trotter_peak = the frozen verifier's signal metric, max over readout t on the 0.05 grid (t0 fixed for FIX), NOT the value at t1; the prediction at t1 for the shipped circuit is dI0. Checked by an independent rebuild to 1e-15 (job j-ef56a7dad7364058).",
+     "retention_pred": 0.005496291948191864,
+     "noisy": [
+      {
+       "seeds": "A",
+       "gate_ro": 0.006883827332024861,
+       "gate": 0.007142047568586607,
+       "ideal": 0.06385341731281469,
+       "n": 5,
+       "cite": "wave r78 j-8d825c8aff59355b noise.json"
+      }
+     ],
+     "I_noisy": [
+      0.03973259710911936,
+      0.03308774825640093
+     ],
+     "shots_per_setting": 7500
+    }
+   },
+   "cite": "typical draw typ_K24_1_24_1_1 (routed typical-draw table); 720-start S2 fit; noisy dI on routing-seed list A, central five seeds, job j-8d825c8aff59355b; shipped QASM from kit job j-5f38416434f460bf",
+   "note": "negative control: a typical uniform K24 Gaussian draw (no selection), same pipeline"
+  },
+  {
+   "id": "typ_K24_1_24_3_3",
+   "kind": "control-",
+   "label": "typical 3_3",
+   "K": 24,
+   "stats": {},
+   "protos": {
+    "FIX": {
+     "P": "FIX",
+     "t0": 1.8,
+     "t1": 2.6,
+     "seed": 1019,
+     "twoq": [
+      288,
+      288
+     ],
+     "oneq": [
+      1054,
+      1057
+     ],
+     "depth": [
+      567,
+      566
+     ],
+     "layout": "logical->physical at the end: P->$61, Q->$51, reg1->$53, reg2->$42, reg3->$52, reg4->$43, reg5->$41, reg6->$44, reg7->$54, reg8->$55",
+     "dI0": 0.06480534980968833,
+     "dI_exact_peak": null,
+     "dI_trotter_peak": null,
+     "peak_note": "dI_exact_peak / dI_trotter_peak = the frozen verifier's signal metric, max over readout t on the 0.05 grid (t0 fixed for FIX), NOT the value at t1; the prediction at t1 for the shipped circuit is dI0. Checked by an independent rebuild to 1e-15 (job j-ef56a7dad7364058).",
+     "retention_pred": 0.014887609758412867,
+     "noisy": [
+      {
+       "seeds": "A",
+       "gate_ro": 0.015067614876737023,
+       "gate": 0.015593469532130477,
+       "ideal": 0.06480534980968833,
+       "n": 5,
+       "cite": "wave r78 j-8d825c8aff59355b noise.json"
+      }
+     ],
+     "I_noisy": [
+      0.083989215903431,
+      0.06892160102669398
+     ],
+     "shots_per_setting": 15200
+    },
+    "SYM": {
+     "P": "SYM",
+     "t0": 3.7,
+     "t1": 3.7,
+     "seed": 1001,
+     "twoq": [
+      406,
+      406
+     ],
+     "oneq": [
+      1504,
+      1513
+     ],
+     "depth": [
+      907,
+      911
+     ],
+     "layout": "logical->physical at the end: P->$22, Q->$32, reg1->$33, reg2->$44, reg3->$43, reg4->$52, reg5->$54, reg6->$53, reg7->$42, reg8->$41",
+     "dI0": 0.12243910804638736,
+     "dI_exact_peak": null,
+     "dI_trotter_peak": null,
+     "peak_note": "dI_exact_peak / dI_trotter_peak = the frozen verifier's signal metric, max over readout t on the 0.05 grid (t0 fixed for FIX), NOT the value at t1; the prediction at t1 for the shipped circuit is dI0. Checked by an independent rebuild to 1e-15 (job j-ef56a7dad7364058).",
+     "retention_pred": 0.015176488192888783,
+     "noisy": [
+      {
+       "seeds": "A",
+       "gate_ro": 0.012562611050676464,
+       "gate": 0.01300139396645883,
+       "ideal": 0.12243910804638736,
+       "n": 5,
+       "cite": "wave r78 j-8d825c8aff59355b noise.json"
+      }
+     ],
+     "I_noisy": [
+      0.056853188245172825,
+      0.04429057719449636
+     ],
+     "shots_per_setting": 9900
+    }
+   },
+   "cite": "typical draw typ_K24_1_24_3_3 (routed typical-draw table); 720-start S2 fit; noisy dI on routing-seed list A, central five seeds, job j-8d825c8aff59355b; shipped QASM from kit job j-5f38416434f460bf",
+   "note": "negative control: a typical uniform K24 Gaussian draw (no selection), same pipeline"
+  }
+ ],
+ "shots": {
+  "p324c_tb_23_24_44300310_1429_155_129|FIX": {
+   "N0": 2000,
+   "se0": 0.013221318688229178,
+   "N": 14000,
+   "se": 0.0050860995905231896,
+   "bias": -0.00022947560541719536,
+   "p": [
+    0.25966799013210184,
+    0.13183099030974627
+   ]
+  },
+  "p324c_tb_23_24_44300310_1429_155_129|SYM": {
+   "N0": 2000,
+   "se0": 0.014854394425480737,
+   "N": 17700,
+   "se": 0.004598979653409277,
+   "bias": -0.00022708024094102164,
+   "p": [
+    0.2704322294370646,
+    0.1626382629266861
+   ]
+  },
+  "p325_tb_23_24_44300310_1429_19277_201|FIX": {
+   "N0": 2000,
+   "se0": 0.013630003905660396,
+   "N": 14900,
+   "se": 0.005117373037013249,
+   "bias": -0.00029923003402822224,
+   "p": [
+    0.27531482247395955,
+    0.1282629018234029
+   ]
+  },
+  "p325_tb_23_24_44300310_1429_19277_201|SYM": {
+   "N0": 2000,
+   "se0": 0.014999321669100122,
+   "N": 18000,
+   "se": 0.00446539639122138,
+   "bias": -6.150431434268078e-05,
+   "p": [
+    0.27923844181891266,
+    0.16395642348368028
+   ]
+  },
+  "p330s2_tb_23_24_16500233_1414_1718_714|FIX": {
+   "N0": 2000,
+   "se0": 0.013699699983114337,
+   "N": 15100,
+   "se": 0.0046709400097396355,
+   "bias": -0.00034655788901323537,
+   "p": [
+    0.2528082646275588,
+    0.1295943473370465
+   ]
+  },
+  "p330s2_tb_23_24_16500233_1414_1718_714|SYM": {
+   "N0": 2000,
+   "se0": 0.012807642541726753,
+   "N": 13200,
+   "se": 0.004936688515442441,
+   "bias": 1.2114484700925798e-05,
+   "p": [
+    0.2399664923654225,
+    0.13485036785801247
+   ]
+  },
+  "eq11_greedy|FIX": {
+   "N0": 2000,
+   "se0": 0.01393502929838547,
+   "N": 15600,
+   "se": 0.0049110630231911055,
+   "bias": -0.00010960042958858829,
+   "p": [
+    0.2643414231524096,
+    0.14988678466957556
+   ]
+  },
+  "eq11_greedy|SYM": {
+   "N0": 2000,
+   "se0": 0.01459250993720508,
+   "N": 17100,
+   "se": 0.004789488508618595,
+   "bias": -4.524679429340761e-05,
+   "p": [
+    0.26276926426073954,
+    0.16894233093708427
+   ]
+  },
+  "typ_K24_1_24_1_1|FIX": {
+   "N0": 2000,
+   "se0": 0.01210425352007482,
+   "N": 11800,
+   "se": 0.005293462668718357,
+   "bias": -0.00029074680336635406,
+   "p": [
+    0.19258538912004425,
+    0.16830979759529469
+   ]
+  },
+  "typ_K24_1_24_1_1|SYM": {
+   "N0": 2000,
+   "se0": 0.009662432017508838,
+   "N": 7500,
+   "se": 0.0047919474500548,
+   "bias": -0.0005646676049682938,
+   "p": [
+    0.14089634865390882,
+    0.12819616306084397
+   ]
+  },
+  "typ_K24_1_24_3_3|FIX": {
+   "N0": 2000,
+   "se0": 0.013741386860995788,
+   "N": 15200,
+   "se": 0.0049052532688272175,
+   "bias": -0.0002224187423435272,
+   "p": [
+    0.2077544151457617,
+    0.18744321087959642
+   ]
+  },
+  "typ_K24_1_24_3_3|SYM": {
+   "N0": 2000,
+   "se0": 0.011083345515854598,
+   "N": 9900,
+   "se": 0.004826226166915957,
+   "bias": -0.0002840010216783855,
+   "p": [
+    0.16961280820300279,
+    0.1490333064015837
+   ]
+  }
+ }
+}

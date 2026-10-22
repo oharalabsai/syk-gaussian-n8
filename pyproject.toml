@@ -1,0 +1,30 @@
+[project]
+name = "syk-gaussian-n8"
+version = "1.0.0"
+description = "N = 8 Gaussian sparse SYK circuits for IBM Nighthawk: model, protocol, verifier, routing, noise (arXiv:2604.10090 conventions)"
+readme = "README.md"
+license = "MIT"
+authors = [{ name = "Ohara Labs" }]
+requires-python = "==3.12.*"
+dependencies = [
+    "numpy==2.5.2",
+    "scipy==1.18.1",
+    "qiskit==2.5.2",
+    "qiskit-ibm-runtime==0.49.0",
+    "qiskit-aer==0.18.0",
+    "qiskit-qasm3-import==0.6.0",
+    "pytket==2.18.5",
+    "pydantic==2.13.4",
+]
+
+[project.scripts]
+verify = "sykn8.reproduce:main"
+route = "sykn8.route:main"
+noise = "sykn8.noise:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/sykn8"]
