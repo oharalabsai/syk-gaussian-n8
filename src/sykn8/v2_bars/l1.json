@@ -1,5 +1,5 @@
 {
- "definition": "GOAL M2a: central 90% = [q5, q95] of the fixed-K Gaussian ensemble (sykg draws, 10,000 per K, ALL draws, no degeneracy filter); sff_scalar = sykg.sff_scalar / DENSE (K=70) mean of it; lower gates = q5 of anticommuting pairs and near-mirror m(H); q = 0..100 percentile tables",
+ "definition": "chaos bands: central 90% = [q5, q95] of the fixed-K Gaussian ensemble (sykg draws, 10,000 per K, ALL draws, no degeneracy filter); sff_scalar = sykg.sff_scalar / DENSE (K=70) mean of it; lower gates = q5 of anticommuting pairs and near-mirror m(H); q = 0..100 percentile tables",
  "dense_sff_scalar_mean": 0.01555668055258751,
  "K": {
   "24": {
@@ -5142,7 +5142,7 @@
  "provenance": {
   "job": "j-d5a5d3e988bd821b (aggregate)",
   "shards": "j-3ef5ed6dd9293bbe,j-84d428be9b2faf12,j-9ee043c1f6fb469f,j-401f0a8731c88070,j-c1fba356f1e571a2,j-f7476bf7b7761aa3,j-d101782320067d98,j-58059ebe97fc24aa",
-  "code": "scripts/l1_transition.py, scripts/l1_aggregate.py",
-  "frozen": "2026-10-22, before any L3 search job"
+  "code": "the run's l1_transition.py and l1_aggregate.py (not shipped)",
+  "frozen": "2026-10-22, before any candidate search job"
  }
 }

@@ -1,4 +1,4 @@
-# GIST hardware kit: selected sparse Gaussian SYK (N = 8) circuits for the traversable-wormhole signal
+# Hardware kit: selected sparse Gaussian SYK (N = 8) circuits for the traversable-wormhole signal
 
 What it is: ready-to-run routed circuits (OpenQASM 3, physical qubits on the Nighthawk map) for the listings that passed the frozen noise-comparison check (3 so far, on 2 distinct term set(s)), plus controls built with the same pipeline: Eq. 11 (positive, the published sparse model) and two typical K = 24 draws (negative). Each listing beat Eq. 11's noisy dI in the FakeNighthawk simulation on both protocols on routing-seed list A (the frozen gate), in canonical term order (order-optimised SYM: tie at best); the listings of set 44300310_1429 also hold on held-out lists B and C, the one marked borderline does not (see its card). Primary listing: 19277_201 (largest worst-protocol margin over Eq. 11).
 
@@ -68,6 +68,16 @@ Jaccard J = |A n B| / |A u B| on the quartet term sets, as labelled / max over a
 
 ## The hardware test: retention rule
 noisy dI = dI0 x a exp(-b x 2q), dI0 = the circuit's noiseless dI, 2q = mean cz count of the mu -/+ pair; FIX a 1.088 b 0.00540, SYM a 1.209 b 0.00561 (least squares over 125 FakeNighthawk rows per protocol, rms 0.003 bits). Test: measured dI / (dI0 x a exp(-b 2q)) for every circuit pair here. The rule predicts the order above; a device that keeps the order but scales all ratios equally changes a, not the claim. Known miss: it over-predicts SYM on set 8400088_2290 (not in this kit) by 14% (retention 0.278 at 239 2q vs Eq. 11 0.370 at 215), so retention is not 2q count alone.
+
+## t1 scan (report only)
+What it is: `t1_scan.json` in 19277_201, 155_129 and eq11_greedy re-runs the shipped pipeline at 5 readout times, the shipped t1 and t1 +/- 0.1, +/- 0.2 (FIX: t0 stays 1.8; SYM: t0 = t1 moves with it). Each circuit is rebuilt from `hamiltonian.json` and routed at the shipped seed. No QASM ships for the off-centre points, and no verdict or prediction above changes.
+How to read it: one row per t1 with `t0`, `2q`, `dI_noiseless` (model, fitted TFD) and `dI_gate_ro` (FakeNighthawk gate + readout, the `uv run noise` function); `shipped: true` marks the shipped circuit, whose values equal this kit's predictions (gate_ro to 1e-15).
+- Both instances beat Eq. 11 at every matched offset, on both protocols (noisy dI ratio at least x1.44 / x1.23 FIX and x1.22 / x1.14 SYM for 19277_201 / 155_129).
+- FIX: dI keeps rising slightly past the shipped t1 (the shipped t1 is the mu < 0 I_PT argmax, not the dI argmax): +0.2 gives 0.1199 -> 0.1217 (19277_201), 0.1021 -> 0.1043 (155_129), 0.0829 -> 0.0844 (Eq. 11), about +2% for all three.
+- SYM: noisy dI peaks within 0.1 of the shipped t1: 0.0945 at 2.25 vs 0.0938 shipped (19277_201, which routes to 223 instead of 225 2q there), 0.0863 at 2.25 vs 0.0855 (155_129), 0.0750 at 2.15 vs 0.0742 (Eq. 11).
+- 2q is flat across the scan (instances FIX 216 / SYM 225, Eq. 11 175 / 215) except that one point; gate_ro / noiseless stays within 0.34-0.40.
+
+`chaos_curves.json` (report only) holds the chaos diagnostics of the same three Hamiltonians: the 18-window time-averaged SFF with the K = 24 typical band and the DENSE mean, the two-point function G(t) on [0, 20] and the size winding at t = 2.21 and at each shipped SYM time; its `keys` field says how to read it.
 
 ## Honest caveats
 - FakeNighthawk (qiskit-ibm-runtime 0.49.0 snapshot, density matrix, gate + readout) is a proxy, not device data; its map is assumed identical to ibm_phoenix. Idle-noise variant: 155_129 FIX ties Eq. 11 (0.0642 vs 0.0644); 19277_201 robust.

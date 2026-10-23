@@ -72,8 +72,9 @@ def resolve(arg: str, root: Path) -> Path:
         if (p / "hamiltonian.json").exists():
             return p
     hits = [p.parent for p in root.glob("*/*/hamiltonian.json") if arg in p.parent.name]
-    if len(hits) == 1:
-        return hits[0]
+    kit = [h for h in hits if h.parent.name == "kit"]
+    if len(hits) == 1 or len(kit) == 1:            # a label in both kit/ and candidates/ resolves to kit/
+        return (kit or hits)[0]
     raise SystemExit(f"no unique listing matches {arg!r}: {[str(h) for h in hits]}")
 
 

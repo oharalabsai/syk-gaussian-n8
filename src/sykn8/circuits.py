@@ -1,16 +1,16 @@
-"""Lane ROUTE: GIST traversable-wormhole circuits for N = 8 sparse SYK, and their routing on IBM fake backends.
+"""GIST traversable-wormhole circuits for N = 8 sparse SYK, and their routing on IBM fake backends.
 
-Conventions (GOAL sec. 2.2; TW = arXiv:2604.10090 .txt line numbers):
+Conventions (TW = arXiv:2604.10090 .txt line numbers):
 - H_{L,R} = sum_T c_T psi_a psi_b psi_c psi_d (ordered, i^{q/2} absorbed in c_T, as Eq. 11), {psi_a^i, psi_b^j} = delta.
 - JW maps (TW:621-640, read off the rendered PDF eqs. S2/S3): psi_R^1 = X/sqrt2, psi_R^2 = Y/sqrt2 on register qubit 1;
   psi_L^1 = Z X, psi_L^2 = Z Y (X/Y on register qubit 2); pair j >= 3: psi_L^j = Z^p X, psi_R^j = Z^p Y, i.e. X/Y on
   register qubit p + 1. S2 (FIX) p = 5,6,4,2,7,3 for j = 3..8; S3 (SYM) p = 6,7,3,4,2,5.
 - Register qubit k (1..8) is qiskit qubit 8 - k, Q (message) = 8, P (reference) = 9, so a Pauli label written in
   register order 1..8 is a qiskit label on qubits range(8) and Operator(qc) is kron(reg1, ..., reg8).
-- Full circuit (GOAL M2e, TW:286-361): Bell_PQ, |I> (X, H, S + 1 CNOT, TW:1184-1190), VQA (6 Rx Rz layers, 5 linear
+- Full circuit (TW:286-361): Bell_PQ, |I> (X, H, S + 1 CNOT, TW:1184-1190), VQA (6 Rx Rz layers, 5 linear
   CNOT layers), e^{+i H_L t0}, fermionic SWAP_QL (eq. S6) with its JW string, e^{-i H_L t0}, e^{i mu V}, e^{-i H_R t1}.
   Readout: measure register qubit 1 and P (T replaced, TW:296-300): 1q only, not built.
-- Trotter: Lie-1 for FIX, Suzuki-2 for SYM (TW:320-323). Backward = same term order, negated time (CL:82).
+- Trotter: Lie-1 for FIX, Suzuki-2 for SYM (TW:320-323). Backward = same term order, negated time.
 """
 from __future__ import annotations
 
@@ -30,7 +30,7 @@ from qiskit.quantum_info import Pauli, SparsePauliOp  # noqa: E402
 
 import os, sys  # noqa: E401,E402
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-import sykg  # noqa: E402  (L0a owns the JW maps; imported, never copied)
+import sykg  # noqa: E402  (sykg owns the JW maps; imported, never copied)
 
 JW_P = {"S2": tuple(sykg.JW_EXP["fix"]), "S3": tuple(sykg.JW_EXP["sym"])}   # p of psi^j = Z^p X, j = 3..8 (TW S2, S3)
 assert JW_P == {"S2": (5, 6, 4, 2, 7, 3), "S3": (6, 7, 3, 4, 2, 5)}, "sykg JW maps changed: re-read TW S2/S3"
@@ -59,13 +59,13 @@ class Candidate(BaseModel):
     mu: float = -12.0
     order: list[int] | None = None                 # Trotter term order (indices into terms); None = sykg default
     backward: Literal["same_order", "adjoint"] = "same_order"
-    prep: Literal["I", "H"] = "I"                  # |I> start (TW) or the older 8 H start (prior campaign, CL:83)
+    prep: Literal["I", "H"] = "I"                  # |I> start (TW) or an |+>^8 start (variant)
     vqa_seed: int = 0                              # generic VQA angles (counts do not depend on them)
     vqa_order: str | None = None                   # VQA rotation order / CNOT chain; None = vqa.ORDER / vqa.CHAIN
-    vqa_chain: str | None = None                   # ("zx", "down" = the prior campaign's block, P2 regression)
+    vqa_chain: str | None = None                   # (e.g. "zx", "down": an alternative block, variant)
     theta: list[float] | None = None               # fitted VQA angles in vqa.py layout (6, 8, 2): [..., 0] thx, [..., 1] thz
     synth: Literal["term", "whole", "whole_nopo", "tket"] = "term"   # per factor, per block (rustiq/LieTrotter),
-                                                   # or "tket": per-block GreedyPauliSimp (M2e v2, DECISIONS.md 00:45)
+                                                   # or "tket": per-block GreedyPauliSimp (the shipped setting)
                                                    # (whole_nopo lets qiskit reorder terms: a different Trotter product)
 
     def trot(self) -> str:
@@ -99,7 +99,7 @@ def majorana_labels(jw: str | list[int]) -> dict[str, dict[int, str]]:
     s4 = {j: "Z" * ((j - 1) // 2) + ("X" if j % 2 else "Y") + "I" * (3 - (j - 1) // 2) for j in range(1, 9)}
     if jw == "S4":
         return {"L": s4}
-    if jw == "split":      # L4 lead (not GIST's map): R on register 1-4 as S4, L = Z^4 x S4 on register 5-8
+    if jw == "split":      # variant (not GIST's map): R on register 1-4 as S4, L = Z^4 x S4 on register 5-8
         return {"R": {j: s4[j] + "IIII" for j in s4}, "L": {j: "ZZZZ" + s4[j] for j in s4}}
     lab = {"L": {1: "ZX" + "I" * 6, 2: "ZY" + "I" * 6}, "R": {1: "X" + "I" * 7, 2: "Y" + "I" * 7}}
     for j, k in zip(range(3, 9), hosts(jw)):
@@ -185,7 +185,7 @@ TKET_ERRS: list[float] = []                      # max |U - e^{i phi} U_ref| of 
 
 @lru_cache(maxsize=4096)
 def tket_block(rots: tuple) -> QuantumCircuit:
-    """M2e v2 block synthesis (pytket 2.18.5): PauliExpBoxes in time order -> GreedyPauliSimp(depth_weight 0, trials 32,
+    """tket block synthesis (pytket 2.18.5): PauliExpBoxes in time order -> GreedyPauliSimp(depth_weight 0, trials 32,
     seed 1, thread_timeout 1e6 so no time-dependent result) -> DecomposeBoxes -> RebaseTket ->
     FullPeepholeOptimise(allow_swaps False). Checked EXACT against the per-term product (<= TKET_TOL) or raises."""
     from pytket import Circuit
@@ -295,8 +295,8 @@ def block_rotations(c: Candidate, paulis: list[tuple[str, float]], t: float, bac
 
 
 def full_circuit(c: Candidate, with_prep: bool = True, with_evo: bool = True, block_synth=None) -> QuantumCircuit:
-    """GOAL M2e full TW circuit, 10 qubits (P, Q, 8 register). block_synth(rotations) -> QuantumCircuit on the register
-    replaces each evolution block (secondary synthesis study, route_synth.py); None = Candidate.synth."""
+    """Full TW circuit, 10 qubits (P, Q, 8 register). block_synth(rotations) -> QuantumCircuit on the register
+    replaces each evolution block (secondary synthesis study); None = Candidate.synth."""
     qc = QuantumCircuit(10)
     pL, pR = h_paulis(c, "L"), h_paulis(c, "R")
 

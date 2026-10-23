@@ -233,7 +233,7 @@ def sff_time_avg(E, windows=None) -> np.ndarray:
 
 
 def sff_scalar(E, windows=None) -> np.ndarray:
-    """chaos gate: min over windows of the time-averaged single-sample SFF. Divide by the DENSE mean (L1) yourself."""
+    """chaos gate: min over windows of the time-averaged single-sample SFF. Divide by the DENSE mean (v2_bars/l1.json) yourself."""
     return sff_time_avg(E, windows).min(axis=-1)
 
 
@@ -272,7 +272,7 @@ def mirror_sets(terms, N: int = N8) -> list:
 
 def mirror_gf2(terms, N: int = N8) -> bool:
     """some Gamma_S anticommutes with every term (GF(2) solvable) -> exact E -> -E of the FULL spectrum.
-    SUFFICIENT only: brute force (L0 rung 0) found K=7 term sets with an exact mirror spectrum and no such S, so gates
+    SUFFICIENT only: brute force found K=7 term sets with an exact mirror spectrum and no such S, so gates
     must use mirror_exact (GF(2) OR the spectral residual)."""
     return len(mirror_sets(terms, N)) > 0
 
@@ -566,7 +566,7 @@ class TwoSided:
 
     def evolve(self, side: str, t, S, trotter=None):
         """exp(-i H_side t). trotter None = exact; 'lie1' = one Lie step in self.order; 'suz2' = one Suzuki-2 step.
-        Backward (t < 0) keeps the SAME term order with negated angles (CL:82 'same_order'); for 'suz2' that equals
+        Backward (t < 0) keeps the SAME term order with negated angles ('same_order'); for 'suz2' that equals
         the exact inverse of the forward step (palindromic)."""
         m = self.mL if side == "L" else self.mR
         if trotter is None:

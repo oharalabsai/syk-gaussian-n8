@@ -1,6 +1,6 @@
 """vqa: GIST's variational TFD (TW:1176-1204) fitted to the exact TFD (Eq. S19, TW:1158), per Hamiltonian and JW map.
 
-Conventions (lane VQA; sykg owns the Hamiltonian convention, this file owns the ansatz):
+Conventions (sykg owns the Hamiltonian convention, this file owns the ansatz):
 - Register: 8 qubits, qubit 1 = leftmost kron factor. Maps S2 (FIX) / S3 (SYM) read from the rendered PDF (TW:621-640):
   psi_L^1,2 = Z1 X2, Z1 Y2; psi_R^1,2 = X1, Y1; psi_L^j = Z^(e_j) X, psi_R^j = Z^(e_j) Y on qubit e_j + 1 (j >= 3),
   e_3..e_8 = S2 (5,6,4,2,7,3), S3 (6,7,3,4,2,5). Each Majorana carries 1/sqrt2 (TW:617-619).
@@ -8,7 +8,7 @@ Conventions (lane VQA; sykg owns the Hamiltonian convention, this file owns the 
 - TFD = e^(-beta (H_L + H_R)/4)|I>, normalized (Eq. S19), beta = 3, H_R = H_L terms on psi_R.
 - Ansatz (TW:1184-1190): |I> then 6 layers of Rx(thx) Rz(thz) per qubit (operator order: Rz acts first, `order="zx"`)
   with a linear CNOT chain cx(q,q+1), q = 1..7, after each of the first 5 layers: 96 parameters, 35 CNOT.
-  Variants for the 0.938 diagnosis: start "H" (|+>^8, the old sibling block, CL:83), order "xz", chain "up".
+  Variants: start "H" (|+>^8), order "xz", chain "up".
 - F = |<TFD|psi(theta)>|^2 (Eq. S21); gradient by the adjoint method (exact, one backward sweep).
 Public: tfd(terms, J, jw_map), fit(terms, J, jw_map, ...) -> (theta, F), fidelity(theta, target, ...)."""
 from __future__ import annotations
@@ -21,7 +21,7 @@ from scipy.optimize import minimize
 
 NQ, NL, NCX = 8, 6, 5
 BETA = 3.0
-ORDER, CHAIN = "xz", "rdown"    # pinned by EXP-VQA-2/3 (lanes/VQA.md): qiskit TwoLocal([rx,rz], cx, linear), reversed index
+ORDER, CHAIN = "xz", "rdown"    # pinned: qiskit TwoLocal([rx,rz], cx, linear), reversed index
 MAPS = {"S2": (5, 6, 4, 2, 7, 3), "S3": (6, 7, 3, 4, 2, 5)}      # e_j for j = 3..8 (TW:621-640, PDF p.12)
 MAPS.update(fix=MAPS["S2"], sym=MAPS["S3"])                     # sykg protocol names
 _X = np.array([[0, 1], [1, 0]], complex)
@@ -56,7 +56,7 @@ def i_state(jw_map: str) -> np.ndarray:
 
 
 def hamiltonians(terms, J, jw_map: str):
-    """(H_L, H_R): sum_T J_T psi_a psi_b psi_c psi_d, i^(q/2) absorbed in J (sykg convention, GOAL 0(g))."""
+    """(H_L, H_R): sum_T J_T psi_a psi_b psi_c psi_d, i^(q/2) absorbed in J (sykg convention)."""
     L, R = majoranas(jw_map)
     HL = sum(c * L[a - 1] @ L[b - 1] @ L[cc - 1] @ L[d - 1] for c, (a, b, cc, d) in zip(J, terms))
     HR = sum(c * R[a - 1] @ R[b - 1] @ R[cc - 1] @ R[d - 1] for c, (a, b, cc, d) in zip(J, terms))
@@ -93,7 +93,7 @@ def _chain_perm(chain: str) -> np.ndarray:
 def start_state(start: str, jw_map: str) -> np.ndarray:
     if start == "I":
         return i_state(jw_map).copy()
-    return np.full(2 ** NQ, 2 ** (-NQ / 2), complex)       # "H": |+>^8 (old sibling block start, CL:83)
+    return np.full(2 ** NQ, 2 ** (-NQ / 2), complex)       # "H": |+>^8 (variant start)
 
 
 def _rx_layer(psi: np.ndarray, th: np.ndarray) -> np.ndarray:

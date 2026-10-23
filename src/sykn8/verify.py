@@ -9,7 +9,8 @@ After freeze this file never changes: a needed change is a new frozen version th
 
 Repository copy: the frozen verifier (version 3.1) of the run with its batch-job entry points removed (no job plumbing).
 Paths point at this package (v2_bars/ and the modules next to this file); PINS are the sha256 values of the run's
-frozen files and are kept as a record, so check_pins reports a mismatch here. Certification ran as a job on the
+frozen files, seven re-pinned to this copy after comment-only edits (originals noted at PINS); the keys keep
+the run's paths as a record, so check_pins reports a mismatch here. Certification ran as a job on the
 run's x86_64 platform; `uv run verify` (reproduce.py) recomputes the numbers from the listings."""
 from __future__ import annotations
 
@@ -60,16 +61,27 @@ MACHINE = "x86_64"                                                 # platform.ma
                                                              # 2q counts differ across architectures (Mac arm64 579 vs
                                                              # box 577 on one seed), so certification = lh job only
 PINS: dict[str, str] = {  # 3.0 freeze; keys are the run's paths (a record)
-    "scripts/circuits.py": "1be605e9af57d8b2619278ee68b2c6cd79a9ea400cfb9a2221a200addc1d7090",
-    "scripts/diag.py": "63f5ff4e5596c72ffc436fe419146dc80e2256e31d38a88fe8bd153a44e2dfc6",
+    # Re-pinned by this repository after comment / docstring-only edits (code unchanged, AST equal; bar files: label
+    # strings only, numbers and keys unchanged; m2e.json settings.circuits_py_blob / vqa_py_blob re-pinned to the
+    # edited files, run values 266dfb615c9d983e4d969e0456325bc082b93a33 / b3189bebfc552fcd7ad8d001b85bcebd9dc9f057).
+    # The run's original sha256 values:
+    #   scripts/circuits.py: 1be605e9af57d8b2619278ee68b2c6cd79a9ea400cfb9a2221a200addc1d7090
+    #   scripts/diag.py: 63f5ff4e5596c72ffc436fe419146dc80e2256e31d38a88fe8bd153a44e2dfc6
+    #   scripts/sykg.py: 1cb012260c7aff85e99faa840fb9ec973d29aa8bae8213e587c7bb324ea5da73
+    #   scripts/vqa.py: 337f82808406134aea1aa5addafb912db68f4e53c79dcb0d2562c66c82682955
+    #   scripts/v2_bars/l5.json: 23b2d54e3e1488c595182bd1f18b3087ea259fcf7565319dcf9d125c6362d719
+    #   scripts/v2_bars/l1.json: 772540a8c1d94ba04173ef3ab42b5c37c7a105ba473ce3d019c08c248bfb30b0
+    #   scripts/v2_bars/m2e.json: cd8a6b419b944d831eb544e489973b12ac8db7519c52d8096910c7db8509a298
+    "scripts/circuits.py": "14c1a509587f26df2861114e0a124a74983ece05050d51533d8f56680a820249",
+    "scripts/diag.py": "3f70e6e4558bd61092beae8a273c85bf0fdb829f12a937c40af384458febf44d",
     "scripts/lhio.py": "36dcbc7c414f233e9837afc23f4ce3b904e4c974f4d4bebf54e8b3cbfe1a56a6",
-    "scripts/sykg.py": "1cb012260c7aff85e99faa840fb9ec973d29aa8bae8213e587c7bb324ea5da73",
-    "scripts/v2_bars/l1.json": "772540a8c1d94ba04173ef3ab42b5c37c7a105ba473ce3d019c08c248bfb30b0",
+    "scripts/sykg.py": "77f46c2772cda5e7a251f94ca885fe3f611c18776abe25d0a3701e267cb2a510",
+    "scripts/v2_bars/l1.json": "7bbe1bbbfb434c0c72ff88bbdf2397f0cefc25f2e0be77b95e596eac2f50a986",
     "scripts/v2_bars/l2.json": "31d9d569fa715e67ad09bc507987f5f7e895fd16e5b7ad2b1f858e406f15b668",
-    "scripts/v2_bars/l5.json": "23b2d54e3e1488c595182bd1f18b3087ea259fcf7565319dcf9d125c6362d719",
-    "scripts/v2_bars/m2e.json": "cd8a6b419b944d831eb544e489973b12ac8db7519c52d8096910c7db8509a298",
+    "scripts/v2_bars/l5.json": "59c949018fbd69a1dfa0dd556b9c1eef373e502392e2ba48b707f3b727bfadcb",
+    "scripts/v2_bars/m2e.json": "93b3704c11f5d190715301ad957126fb41dc5cdf51b4a4bc5f4a05ab07334745",
     "scripts/v2_bars/vqa_eq11.json": "86e100acc7244eb9ae8103369c2b9ac6cb3ab8e6914cc95ad9964440c767d532",
-    "scripts/vqa.py": "337f82808406134aea1aa5addafb912db68f4e53c79dcb0d2562c66c82682955",
+    "scripts/vqa.py": "97eceb3db33dfa53cf5edd369841e4331a5fabcc7d57c53e62b358822aa58276",
 }                                                            # sha256 of EVERY bar + code file (relative to R)
 VQA_BUDGET = {"n_starts": 720, "seed": 1, "n_small": 64, "maxiter": 3000}   # vqa.tasks: seeds 1000..1719, 1000..1063
 # small-angle, no warm start (720-start rule); the SAME budget for Eq. 11's bar and every candidate.

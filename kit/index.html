@@ -1,5 +1,5 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>GIST hardware kit: circuits that beat Eq. 11 in noisy simulation, canonical term order</title><style>
+<title>Hardware kit: circuits that beat Eq. 11 in noisy simulation, canonical term order</title><style>
 body{background:#FAF6EC;color:#1d2a20;font:16px/1.55 -apple-system,Segoe UI,Helvetica,Arial,sans-serif;margin:0;padding:24px}
 main{max-width:880px;margin:0 auto}h1{color:#2E5E3A;font-size:1.6em;margin:.2em 0 .4em}h2{color:#2E5E3A;font-size:1.1em;margin-top:1.6em}
 .lead{font-size:1.05em}.tw{overflow-x:auto}table{border-collapse:collapse;width:100%;min-width:520px;background:#fff}
@@ -7,7 +7,7 @@ th,td{padding:8px 10px;border-bottom:1px solid #e4dcc6;text-align:left;vertical-
 tr.l td:first-child{border-left:4px solid #C9A227}tr.p td:first-child{border-left:4px solid #2E5E3A}tr.n td:first-child{border-left:4px solid #bbb}
 .d{color:#2E5E3A;font-weight:600}.dn{color:#9a6b63}small{color:#6b6b5e}a{color:#2E5E3A}code{background:#f1ead6;padding:1px 4px;border-radius:3px}
 </style></head><body><main>
-<h1>GIST hardware kit: wormhole-signal circuits that beat Eq. 11 in noisy simulation, in canonical term order (order-optimised SYM: tie at best)</h1>
+<h1>Hardware kit: wormhole-signal circuits that beat Eq. 11 in noisy simulation, in canonical term order (order-optimised SYM: tie at best)</h1>
 <p class="lead">In plain words: we searched sparse Gaussian SYK models (8 Majoranas, 24 terms) for ones whose traversable-wormhole
 signal (the mutual-information jump dI between the probe P and the readout T when the coupling sign flips) survives
 hardware noise better than the published Eq. 11 model. 2 listings, both from one term set (the recommended pick), keep
@@ -28,8 +28,7 @@ qubits, and the term overlap between options: <a href="README.md">README.md</a>.
 <h2>What to run</h2><p>Each folder: <code>FIX_mu-12.qasm</code>, <code>FIX_mu+12.qasm</code>, <code>SYM_mu-12.qasm</code>,
 <code>SYM_mu+12.qasm</code>, run as is; two-qubit tomography of P and register qubit 1 (physical qubits in each header). Prediction
 to test: 19277_201 &gt; 155_129 &gt; Eq. 11 on both protocols, and noisy dI = dI0 &times; a e<sup>&minus;b&middot;2q</sup>
-(FIX a 1.088, b 0.00540; SYM a 1.209, b 0.00561). Shots and caveats: <a href="README.md">README.md</a>. Everything:
-<a href="gist_kit.zip">gist_kit.zip</a>.</p>
+(FIX a 1.088, b 0.00540; SYM a 1.209, b 0.00561). Shots and caveats: <a href="README.md">README.md</a>.</p>
 <h2>Caveats</h2><p>FakeNighthawk is a proxy for the device. The win holds with both sides in the canonical term order; with
 order-optimised SYM it is a tie at best. The listings are rare selections (about 1 in 1.5e13), and so far come from one distinct
 term set.</p>

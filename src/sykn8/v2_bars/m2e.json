@@ -5,9 +5,9 @@
   "layout_method": null,
   "routing_method": null,
   "hls": "default",
-  "circuits_py_blob": "266dfb615c9d983e4d969e0456325bc082b93a33",
+  "circuits_py_blob": "d47cf3dd6ff377046c1a53c191992fbcff3ebf77",
   "circuits_py_last_commit": "87c637f963e83e23fd23c97463fa79ce93c88ddd",
-  "vqa_py_blob": "b3189bebfc552fcd7ad8d001b85bcebd9dc9f057",
+  "vqa_py_blob": "97c15dc820f8f81c090f7780ec0ed890c27cdeb2",
   "approximation_degree": 1.0,
   "synth": "tket",
   "term_order": "greedy_order(sorted terms)",
@@ -15,7 +15,7 @@
   "backward": "same_order",
   "prep": "I",
   "vqa_seed": 0,
-  "rule": "v3 (DECISIONS.md 01:47): JW map S2 for FIX and S2 for SYM",
+  "rule": "v3: JW map S2 for FIX and S2 for SYM",
   "jw": {
    "FIX": "S2",
    "SYM": "S2"
@@ -185,8 +185,8 @@
    "29": 0,
    "30": 1
   },
-  "source": "L3 (scripts/l3_frozen.json): typical samples passing M2a-d per K; < 50 -> bar on all typical samples (GOAL M2e)"
+  "source": "typical samples passing gates a-d (chaos, signal, VQA fit, diagnostics) per K; < 50 -> bar on all typical samples"
  },
- "typical_source": "scripts/l3_handoff/l2_typical_route.json (L2 typical draws, 200 per K; per-draw peak times t_fix / t_sym)",
+ "typical_source": "the run's typical-draw routing file (typical draws, 200 per K; per-draw peak times t_fix / t_sym)",
  "max_block_err": 4.2502722067292454e-12
 }

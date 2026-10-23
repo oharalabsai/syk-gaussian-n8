@@ -1,0 +1,92 @@
+{
+ "id": "eq11_greedy",
+ "report_only": true,
+ "what": "t1 scan of the shipped pipeline: the readout time t1 moved by -0.2..+0.2 around the shipped t1 (FIX: t0 stays 1.8; SYM: t0 = t1 moves too), each circuit rebuilt from hamiltonian.json and routed at the shipped seed. No QASM ships for the off-centre points.",
+ "keys": "t1, t0; shipped = this is the shipped circuit; 2q = routed two-qubit count (mu = -12 and +12 equal); dI_noiseless = sykg model with the fitted TFD, bits; dI_gate_ro = FakeNighthawk gate + readout noise at the shipped seed, bits (the same function as uv run noise)",
+ "protocols": {
+  "FIX": [
+   {
+    "t1": 2.15,
+    "t0": 1.8,
+    "shipped": false,
+    "2q": 175,
+    "dI_noiseless": 0.19748708503358392,
+    "dI_gate_ro": 0.07874952088259568
+   },
+   {
+    "t1": 2.25,
+    "t0": 1.8,
+    "shipped": false,
+    "2q": 175,
+    "dI_noiseless": 0.20550603576871262,
+    "dI_gate_ro": 0.08111536245182305
+   },
+   {
+    "t1": 2.35,
+    "t0": 1.8,
+    "shipped": true,
+    "2q": 175,
+    "dI_noiseless": 0.21183486841621657,
+    "dI_gate_ro": 0.08287743551081439
+   },
+   {
+    "t1": 2.45,
+    "t0": 1.8,
+    "shipped": false,
+    "2q": 175,
+    "dI_noiseless": 0.21638155407885074,
+    "dI_gate_ro": 0.08407608733342142
+   },
+   {
+    "t1": 2.55,
+    "t0": 1.8,
+    "shipped": false,
+    "2q": 175,
+    "dI_noiseless": 0.2190951388726048,
+    "dI_gate_ro": 0.0844391584033568
+   }
+  ],
+  "SYM": [
+   {
+    "t1": 1.85,
+    "t0": 1.85,
+    "shipped": false,
+    "2q": 215,
+    "dI_noiseless": 0.18366087552301047,
+    "dI_gate_ro": 0.06930423409224895
+   },
+   {
+    "t1": 1.95,
+    "t0": 1.95,
+    "shipped": false,
+    "2q": 215,
+    "dI_noiseless": 0.19344538305739833,
+    "dI_gate_ro": 0.07224250823799161
+   },
+   {
+    "t1": 2.05,
+    "t0": 2.05,
+    "shipped": true,
+    "2q": 215,
+    "dI_noiseless": 0.20032491543686803,
+    "dI_gate_ro": 0.07415210740738676
+   },
+   {
+    "t1": 2.15,
+    "t0": 2.15,
+    "shipped": false,
+    "2q": 215,
+    "dI_noiseless": 0.20403645125942216,
+    "dI_gate_ro": 0.07499981633911346
+   },
+   {
+    "t1": 2.25,
+    "t0": 2.25,
+    "shipped": false,
+    "2q": 215,
+    "dI_noiseless": 0.2044515352859284,
+    "dI_gate_ro": 0.0746523001670123
+   }
+  ]
+ }
+}
