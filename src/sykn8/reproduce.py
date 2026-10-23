@@ -31,6 +31,9 @@ TOL = 1e-8                   # recomputed vs reported, same code and pins (obser
 TOL_I = 0.003                #  Eq. 11 vs Fig. S1 of arXiv:2604.10090 (bits, figure read-off)
 TS = np.round(np.arange(0, 20.0001, 0.1), 1)
 FIG_S1 = {"sym": 0.212, "fix": 0.276}   # Eq. 11 exact pair-(1, 2) Delta I_PT peak, arXiv:2604.10090 Fig. S1
+# Eq. 11 noiseless Trotter dI peak in its authors' term orders (sykg.EQ11_GIST_ORDERS): our model's value, a regression
+# pin (the paper prints none); (protocol, backward) -> value
+GIST_TROT = {("fix", "same_order"): 0.2436, ("fix", "adjoint"): 0.2239, ("sym", "same_order"): 0.2123}
 
 
 class Check(BaseModel):
@@ -70,6 +73,11 @@ def eq11_checks() -> list[Check]:
     for p, ref in FIG_S1.items():
         m = sykg.TwoSided(T, J, p)
         out.append(chk("eq11", f"figS1_{p}_dI", sykg.peak_window(TS, m.ipt(-sykg.MU, TS) - m.ipt(sykg.MU, TS))[0], ref, TOL_I))
+    for (p, back), ref in GIST_TROT.items():
+        oL, oR = sykg.EQ11_GIST_ORDERS[p]
+        m = sykg.TwoSided(T, J, p, order=oL, order_r=oR, back=back)
+        out.append(chk("eq11", f"gist_order_{p}_{back}_dI", sykg.peak_window(TS, m.delta(TS, "lie1" if p == "fix" else "suz2"))[0],
+                       ref, 1e-4))
     return out
 
 

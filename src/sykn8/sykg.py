@@ -54,6 +54,11 @@ def eq11():
 # the unique one of all 1568 Lie-1 product classes within 0.001 of six reference Trotter numbers.
 EQ11_PDF_ORDER = (9, 3, 5, 1, 4, 8, 7, 6, 2, 0)
 
+# Term orders arXiv:2604.10090 used for Eq. 11 (M. Byun, private communication, 2026-10-23): indices into eq11()'s printed
+# list, order[0] applied first, (H_L, H_R). The backward Lie-1 step (same_order or adjoint) was not stated.
+EQ11_GIST_ORDERS = {"fix": ((8, 5, 6, 1, 9, 3, 4, 2, 7, 0), (8, 5, 6, 4, 9, 3, 1, 7, 2, 0)),
+                    "sym": ((3, 8, 7, 5, 0, 1, 2, 9, 6, 4), (3, 7, 8, 1, 2, 5, 6, 0, 4, 9))}
+
 
 def default_term_order(terms) -> list:
     """pinned Lie-1 / Suzuki-2 term order: Eq. 11's term set -> EQ11_PDF_ORDER (matched by quartet, so any listing
@@ -518,7 +523,7 @@ class TwoSided:
     kick commutes with the readout, so both are omitted, as on hardware."""
 
     def __init__(self, terms, J, protocol: str = "fix", pair=(1, 2), order=None, beta: float = BETA,
-                 tfd_state=None, r_in_t0: bool = False):
+                 tfd_state=None, r_in_t0: bool = False, order_r=None, back: str = "same_order"):
         """order = Trotter term order (None -> default_term_order). r_in_t0=True also Trotterizes H_R in the t0 stage
         (e^{+-iH_tot t0}, same order both sides; then the R products do not cancel under same_order). Default False:
         R absent from the t0 stage, which with EQ11_PDF_ORDER reproduces the PDF Lie-1 curves to 3e-4 (
@@ -528,6 +533,8 @@ class TwoSided:
         self.terms = [tuple(sorted(t)) for t in terms]; self.J = np.asarray(J, float)
         self.protocol, self.pair, self.beta = protocol, tuple(pair), beta
         self.order = default_term_order(self.terms) if order is None else list(order)
+        self.order_r = self.order if order_r is None else list(order_r)   # H_R's own term order (GIST, Oct 23)
+        self.back = back                       # Lie-1 backward step: "same_order" or "adjoint" (reversed order)
         self.r_in_t0 = r_in_t0
         ix = term_index(N8); cols = np.array([ix[t] for t in self.terms])
         self.mL = tuple(a[cols] for a in _term_monos(protocol, "L"))
@@ -567,15 +574,17 @@ class TwoSided:
     def evolve(self, side: str, t, S, trotter=None):
         """exp(-i H_side t). trotter None = exact; 'lie1' = one Lie step in self.order; 'suz2' = one Suzuki-2 step.
         Backward (t < 0) keeps the SAME term order with negated angles ('same_order'); for 'suz2' that equals
-        the exact inverse of the forward step (palindromic)."""
+        the exact inverse of the forward step (palindromic). back='adjoint' reverses the Lie-1 order when every t <= 0."""
         m = self.mL if side == "L" else self.mR
         if trotter is None:
             w, v = (self.wL, self.vL) if side == "L" else (self.wR, self.vR)
             return _apply_eig(w, v, t, S)
+        o = self.order if side == "L" else self.order_r
         if trotter == "lie1":
-            return self._product(m, t, S, self.order)
+            neg = self.back == "adjoint" and bool(np.all(np.asarray(t, float) <= 0))
+            return self._product(m, t, S, o[::-1] if neg else o)
         if trotter == "suz2":
-            return self._product(m, np.asarray(t, float) / 2, S, self.order + self.order[::-1])
+            return self._product(m, np.asarray(t, float) / 2, S, o + o[::-1])
         raise ValueError(trotter)
 
     def init_state(self, n: int = 1) -> np.ndarray:

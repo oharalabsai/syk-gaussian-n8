@@ -64,6 +64,8 @@ PINS: dict[str, str] = {  # 3.0 freeze; keys are the run's paths (a record)
     # Re-pinned by this repository after comment / docstring-only edits (code unchanged, AST equal; bar files: label
     # strings only, numbers and keys unchanged; m2e.json settings.circuits_py_blob / vqa_py_blob re-pinned to the
     # edited files, run values 266dfb615c9d983e4d969e0456325bc082b93a33 / b3189bebfc552fcd7ad8d001b85bcebd9dc9f057).
+    # circuits.py / sykg.py re-pinned 2026-10-23 after adding the opt-in order_r / back arguments (default path unchanged,
+    # every reproduce check equal); 22 Oct values 14c1a509... / 77f46c27..., m2e blob d47cf3d.
     # The run's original sha256 values:
     #   scripts/circuits.py: 1be605e9af57d8b2619278ee68b2c6cd79a9ea400cfb9a2221a200addc1d7090
     #   scripts/diag.py: 63f5ff4e5596c72ffc436fe419146dc80e2256e31d38a88fe8bd153a44e2dfc6
@@ -72,14 +74,14 @@ PINS: dict[str, str] = {  # 3.0 freeze; keys are the run's paths (a record)
     #   scripts/v2_bars/l5.json: 23b2d54e3e1488c595182bd1f18b3087ea259fcf7565319dcf9d125c6362d719
     #   scripts/v2_bars/l1.json: 772540a8c1d94ba04173ef3ab42b5c37c7a105ba473ce3d019c08c248bfb30b0
     #   scripts/v2_bars/m2e.json: cd8a6b419b944d831eb544e489973b12ac8db7519c52d8096910c7db8509a298
-    "scripts/circuits.py": "14c1a509587f26df2861114e0a124a74983ece05050d51533d8f56680a820249",
+    "scripts/circuits.py": "739b1b6757fd9ca06ae50a4471d30c20878dd5608c9cf0ea13348d1d458857a5",
     "scripts/diag.py": "3f70e6e4558bd61092beae8a273c85bf0fdb829f12a937c40af384458febf44d",
     "scripts/lhio.py": "36dcbc7c414f233e9837afc23f4ce3b904e4c974f4d4bebf54e8b3cbfe1a56a6",
-    "scripts/sykg.py": "77f46c2772cda5e7a251f94ca885fe3f611c18776abe25d0a3701e267cb2a510",
+    "scripts/sykg.py": "94ad974cf435ffa1bd904ecd6a777a151346c9b8f83f2603923a3a60bc0f9f9d",
     "scripts/v2_bars/l1.json": "7bbe1bbbfb434c0c72ff88bbdf2397f0cefc25f2e0be77b95e596eac2f50a986",
     "scripts/v2_bars/l2.json": "31d9d569fa715e67ad09bc507987f5f7e895fd16e5b7ad2b1f858e406f15b668",
     "scripts/v2_bars/l5.json": "59c949018fbd69a1dfa0dd556b9c1eef373e502392e2ba48b707f3b727bfadcb",
-    "scripts/v2_bars/m2e.json": "93b3704c11f5d190715301ad957126fb41dc5cdf51b4a4bc5f4a05ab07334745",
+    "scripts/v2_bars/m2e.json": "e05c00f5cd34c799cc40a91c6d4665704bad7d9028d0a0d69daaf7e3d7ff8acc",
     "scripts/v2_bars/vqa_eq11.json": "86e100acc7244eb9ae8103369c2b9ac6cb3ab8e6914cc95ad9964440c767d532",
     "scripts/vqa.py": "97eceb3db33dfa53cf5edd369841e4331a5fabcc7d57c53e62b358822aa58276",
 }                                                            # sha256 of EVERY bar + code file (relative to R)

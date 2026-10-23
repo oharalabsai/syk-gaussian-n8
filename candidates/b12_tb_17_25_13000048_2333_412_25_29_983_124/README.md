@@ -13,8 +13,8 @@ Files: `hamiltonian.json` (terms, J, order, times, mu, VQA angles, layout, seeds
 | FIX | 2.4 | 0.9773 | 0.1352 | 218 | 904 | 480 | 1005 |
 | SYM | 2.1 | 0.9773 | 0.0077 | 299 | 1249 | 678 | 1015 |
 
-Regenerate for another time or mu sign: `python m3/make_circuits.py candidates/b12_tb_17_25_13000048_2333_412_25_29_983_124/hamiltonian.json --protocol FIX --t 2.0 --mu 12 --route`.
+Rebuild and check the shipped circuits: `uv run route candidates/b12_tb_17_25_13000048_2333_412_25_29_983_124`.
 
-Conventions: see `hamiltonian.json` -> conventions (JW map S2 for both protocols; your SYM runs used S3).
+Conventions: see `hamiltonian.json` -> conventions (JW map S2 for both protocols; arXiv:2604.10090 ran SYM in S3).
 
-Submit the shipped QASM as is (no re-transpile; or initial_layout + optimization_level=0). J_T multiplies the ordered Majorana product with i^(q/2) absorbed (Eq. 11 as printed); Eq. 6's extra sign drops F to about 0.45. FakeNighthawk's map is assumed identical to ibm_phoenix. Measure P and register qubit 1 (physical qubits in each QASM header).
+Submit the shipped QASM as is (no re-transpile; or initial_layout + optimization_level=0). J_T multiplies the ordered Majorana product with i^(q/2) absorbed (Eq. 11 as printed); Eq. 6's extra sign drops F to about 0.45. FakeNighthawk's coupling map is assumed to match the Nighthawk device. Measure P and register qubit 1 (physical qubits in each QASM header).

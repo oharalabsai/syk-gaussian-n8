@@ -59,6 +59,7 @@ class Candidate(BaseModel):
     mu: float = -12.0
     order: list[int] | None = None                 # Trotter term order (indices into terms); None = sykg default
     backward: Literal["same_order", "adjoint"] = "same_order"
+    order_r: list[int] | None = None               # H_R's own term order (None = order); GIST Oct 23 orders differ L/R
     prep: Literal["I", "H"] = "I"                  # |I> start (TW) or an |+>^8 start (variant)
     vqa_seed: int = 0                              # generic VQA angles (counts do not depend on them)
     vqa_order: str | None = None                   # VQA rotation order / CNOT chain; None = vqa.ORDER / vqa.CHAIN
@@ -300,11 +301,13 @@ def full_circuit(c: Candidate, with_prep: bool = True, with_evo: bool = True, bl
     qc = QuantumCircuit(10)
     pL, pR = h_paulis(c, "L"), h_paulis(c, "R")
 
-    def blk(p, t, back=False):
+    cR = c if c.order_r is None else c.model_copy(update={"order": list(c.order_r)})
+
+    def blk(p, t, back=False, cc=c):
         if block_synth is None:
-            evolve(qc, c, p, t, backward=back)
+            evolve(qc, cc, p, t, backward=back)
         else:
-            qc.compose(block_synth(block_rotations(c, p, t, back)), qubits=range(8), inplace=True)
+            qc.compose(block_synth(block_rotations(cc, p, t, back)), qubits=range(8), inplace=True)
     if with_prep:
         vqa(qc, c.vqa_seed, c.prep, c.jw, c.theta, c.vqa_order, c.vqa_chain)
         qc.h(PQ); qc.cx(PQ, Q)
@@ -316,7 +319,7 @@ def full_circuit(c: Candidate, with_prep: bool = True, with_evo: bool = True, bl
     for la, co in v_paulis(c.jw):
         _evo(qc, la, -c.mu * co)                                  # e^{i mu V}
     if with_evo:
-        blk(pR, c.tread())
+        blk(pR, c.tread(), cc=cR)
     return qc
 
 
