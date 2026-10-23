@@ -6,6 +6,12 @@ An instance is one term set plus one Gaussian coupling draw (the code and file n
 This repository holds the model, the two-sided protocol, the verifier, routing and the FakeNighthawk noise model, plus
 every instance, so each reported noiseless number can be recomputed on a laptop. Ohara Labs, October 2026.
 
+## Result
+
+- One N = 8 Gaussian sparse SYK instance with K = 24 terms (`kit/p325_tb_23_24_44300310_1429_19277_201`, backup 155_129 on the same term set) routes on FakeNighthawk to 216 (FIX) / 225 (SYM) two-qubit gates: 23% / 5% more than the binary Eq. 11 of arXiv:2604.10090 in the same pipeline (175 / 215), 30% / 45% fewer than a typical K = 24 draw (309 / 410).
+- In a FakeNighthawk noise simulation the FIX circuit keeps 25-35% more teleportation signal than Eq. 11 (18% with term order optimized on both sides); SYM keeps 25-29% more in canonical order and ties with optimized order.
+- Simulation only; nothing has run on hardware. The note is `paper/gaussian-sparse-syk-n8-nighthawk-teleportation.pdf`; `uv run verify` reproduces its noiseless numbers in about a minute.
+
 Conventions follow arXiv:2604.10090 (beta = 3, |mu| = 12, {psi_a, psi_b} = delta_ab, base-2 entropies, JW map S2 of its
 Eq. S2 for both protocols, FIX t0 = 1.8 and SYM t0 = t1).
 
