@@ -54,7 +54,7 @@ def eq11():
 # the unique one of all 1568 Lie-1 product classes within 0.001 of six reference Trotter numbers.
 EQ11_PDF_ORDER = (9, 3, 5, 1, 4, 8, 7, 6, 2, 0)
 
-# Term orders arXiv:2604.10090 used for Eq. 11 (M. Byun, private communication, 2026-10-23): indices into eq11()'s printed
+# Term orders arXiv:2604.10090 used for Eq. 11 (sent by its authors, 2026-10-23): indices into eq11()'s printed
 # list, order[0] applied first, (H_L, H_R). The backward Lie-1 step (same_order or adjoint) was not stated.
 EQ11_GIST_ORDERS = {"fix": ((8, 5, 6, 1, 9, 3, 4, 2, 7, 0), (8, 5, 6, 4, 9, 3, 1, 7, 2, 0)),
                     "sym": ((3, 8, 7, 5, 0, 1, 2, 9, 6, 4), (3, 7, 8, 1, 2, 5, 6, 0, 4, 9))}

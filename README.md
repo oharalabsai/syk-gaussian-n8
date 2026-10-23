@@ -13,9 +13,9 @@ Everything here is simulation; nothing has run on hardware yet.
 - **Signal under noise:** in a FakeNighthawk noise simulation, the FIX circuit keeps 25-35% more teleportation signal
   than Eq. 11, or 18% with the term order optimized on both sides. SYM keeps 25-29% more in the default order and ties
   once the order is optimized.
-- **Eq. 11 in its authors' own term orders** (private communication, 23 Oct 2026): in map S2 our margins are 23-50%
-  (FIX, the backward convention worse for us) and 51-67% (SYM). In map S3, where the paper ran SYM, SYM only ties, so
-  the SYM claim is for S2 only.
+- **Against Eq. 11 in its authors' own term orders** (sent to us on 23 Oct 2026, listed in the note): under noise in map
+  S2, our circuits keep 23-60% more FIX signal (either backward convention) and 51-67% more SYM signal. In map S3, where
+  the paper ran SYM, SYM only ties, so the SYM claim is for S2 only.
 
 The note is `paper/gaussian-sparse-syk-n8-nighthawk-teleportation.pdf`.
 
@@ -33,7 +33,7 @@ uv sync    # exact versions from uv.lock (qiskit 2.5.2, qiskit-ibm-runtime 0.49.
 ```bash
 uv run verify                    # about 1 min: every noiseless number in the note
 uv run route 19277_201           # about 1 min: rebuild and route the circuits, compare with the shipped files
-uv run noise 19277_201 --protocol FIX   # a few min: the FakeNighthawk noisy signal
+uv run noise 19277_201 --protocol FIX   # a few min: the signal left under FakeNighthawk noise
 ```
 
 - **`verify`** first checks the model against Eq. 11's known answers in arXiv:2604.10090: level-spacing ratios
@@ -45,7 +45,7 @@ uv run noise 19277_201 --protocol FIX   # a few min: the FakeNighthawk noisy sig
   platform: the shipped files were routed on x86_64 Linux, and an arm64 Mac can differ by a gate. `verify` counts gates in
   the shipped files, so it does not depend on the platform.
 - **`noise`** simulates the shipped circuit pair with FakeNighthawk gate and readout noise. The expected result for
-  19277_201 FIX is a noisy signal of 0.1199 bits.
+  19277_201 FIX is 0.1199 bits of signal under noise.
 
 An instance argument can be a folder path, a folder name, or any unique part of one (a name found in both `kit/` and
 `candidates/` resolves to `kit/`).

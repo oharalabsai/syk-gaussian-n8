@@ -77,7 +77,7 @@ PINS: dict[str, str] = {  # 3.0 freeze; keys are the run's paths (a record)
     "scripts/circuits.py": "739b1b6757fd9ca06ae50a4471d30c20878dd5608c9cf0ea13348d1d458857a5",
     "scripts/diag.py": "3f70e6e4558bd61092beae8a273c85bf0fdb829f12a937c40af384458febf44d",
     "scripts/lhio.py": "36dcbc7c414f233e9837afc23f4ce3b904e4c974f4d4bebf54e8b3cbfe1a56a6",
-    "scripts/sykg.py": "94ad974cf435ffa1bd904ecd6a777a151346c9b8f83f2603923a3a60bc0f9f9d",
+    "scripts/sykg.py": "c2f8644811a0d8f505f349e4f04ce4c48f7de379480ccaa37d520e703efd5bcf",
     "scripts/v2_bars/l1.json": "7bbe1bbbfb434c0c72ff88bbdf2397f0cefc25f2e0be77b95e596eac2f50a986",
     "scripts/v2_bars/l2.json": "31d9d569fa715e67ad09bc507987f5f7e895fd16e5b7ad2b1f858e406f15b668",
     "scripts/v2_bars/l5.json": "59c949018fbd69a1dfa0dd556b9c1eef373e502392e2ba48b707f3b727bfadcb",
